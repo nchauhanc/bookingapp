@@ -3,11 +3,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: runner   # optimised production image
-    volumes:
-      - db_data:/data
-    command: sh -c "npx prisma db push && node server.js"
+      target: runner
     restart: unless-stopped
-
-volumes:
-  db_data:

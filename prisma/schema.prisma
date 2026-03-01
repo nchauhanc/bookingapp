@@ -3,18 +3,18 @@
 
 generator client {
   provider      = "prisma-client-js"
-  // native = macOS/Windows dev; linux-musl-openssl-3.0.x = node:20-alpine in Docker
-  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+  // native = macOS/Windows dev
+  // linux-musl-openssl-3.0.x = Docker (node:20-alpine)
+  // rhel-openssl-3.0.x = Vercel serverless (Amazon Linux)
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  // Neon uses connection pooling — direct URL is used for migrations only
+  directUrl = env("DIRECT_URL")
 }
-
-// ─── Enums ────────────────────────────────────────────────────────────────────
-
-// SQLite does not have a native enum type; Prisma emulates enums as strings.
 
 model User {
   id            String    @id @default(cuid())
