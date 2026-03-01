@@ -1,0 +1,24 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder        # has all deps including devDeps + openssl
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: file:/data/app.db
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET:-dev-secret-change-in-production}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+    volumes:
+      - db_data:/data            # persist SQLite file across restarts
+      - ./src:/app/src           # hot-reload source files only
+      - ./prisma:/app/prisma     # pick up schema changes
+    # node_modules stay inside the container (built for Linux, not macOS)
+    command: sh -c "node node_modules/prisma/build/index.js db push && npm run dev"
+    restart: unless-stopped
+
+volumes:
+  db_data:
