@@ -27,7 +27,8 @@ export default withAuth(
           pathname.startsWith("/login") ||
           pathname.startsWith("/register") ||
           pathname.startsWith("/api/auth") ||
-          pathname.startsWith("/api/register")
+          pathname.startsWith("/api/register") ||
+          pathname.startsWith("/p/")   // public professional schedule pages
         ) {
           return true;
         }

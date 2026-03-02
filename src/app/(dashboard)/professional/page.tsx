@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import ShareLink from "@/components/professionals/ShareLink";
 
 export default async function ProfessionalDashboard() {
   const session = await getServerSession(authOptions);
@@ -75,6 +76,15 @@ export default async function ProfessionalDashboard() {
             <p className="text-sm text-gray-500">See customer appointments</p>
           </div>
         </Link>
+      </div>
+
+      {/* Share your schedule */}
+      <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+        <p className="font-semibold text-gray-900 mb-1">🔗 Share your schedule</p>
+        <p className="text-sm text-gray-500 mb-3">
+          Send this link to customers — they can browse your slots and book directly.
+        </p>
+        <ShareLink userId={session.user.id} />
       </div>
     </div>
   );
