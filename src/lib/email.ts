@@ -16,7 +16,7 @@ export async function sendVerificationEmail(
   }
 
   await resend.emails.send({
-    from: "BookSlot <noreply@bookslot.dev>",
+    from: "BookSlot <onboarding@resend.dev>",
     to: email,
     subject: "Verify your BookSlot account",
     html: `
