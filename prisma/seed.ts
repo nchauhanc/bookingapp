@@ -13,7 +13,7 @@ async function main() {
 
   const alice = await prisma.user.upsert({
     where: { email: "alice@bookslot.dev" },
-    update: {},
+    update: { emailVerified: new Date() },
     create: {
       name: "Dr. Alice Chen",
       email: "alice@bookslot.dev",
@@ -21,12 +21,13 @@ async function main() {
       role: "PROFESSIONAL",
       speciality: "Dentist",
       bio: "10 years of experience in general and cosmetic dentistry. Friendly and thorough.",
+      emailVerified: new Date(),
     },
   });
 
   const bob = await prisma.user.upsert({
     where: { email: "bob@bookslot.dev" },
-    update: {},
+    update: { emailVerified: new Date() },
     create: {
       name: "Bob Trainer",
       email: "bob@bookslot.dev",
@@ -34,12 +35,13 @@ async function main() {
       role: "PROFESSIONAL",
       speciality: "Personal Trainer",
       bio: "Certified PT with focus on strength and conditioning. Online & in-person sessions.",
+      emailVerified: new Date(),
     },
   });
 
   const sara = await prisma.user.upsert({
     where: { email: "sara@bookslot.dev" },
-    update: {},
+    update: { emailVerified: new Date() },
     create: {
       name: "Sara Wellness",
       email: "sara@bookslot.dev",
@@ -47,6 +49,7 @@ async function main() {
       role: "PROFESSIONAL",
       speciality: "Life Coach",
       bio: "Helping professionals navigate career transitions and achieve work-life balance.",
+      emailVerified: new Date(),
     },
   });
 
@@ -54,12 +57,13 @@ async function main() {
 
   await prisma.user.upsert({
     where: { email: "customer@bookslot.dev" },
-    update: {},
+    update: { emailVerified: new Date() },
     create: {
       name: "John Customer",
       email: "customer@bookslot.dev",
       password: await hash("password123"),
       role: "CUSTOMER",
+      emailVerified: new Date(),
     },
   });
 

@@ -2,10 +2,27 @@ import Link from "next/link";
 import LoginForm from "@/components/auth/LoginForm";
 import OAuthButton from "@/components/auth/OAuthButton";
 
-export default function LoginPage() {
+interface LoginPageProps {
+  searchParams: Promise<{ verified?: string }>;
+}
+
+export default async function LoginPage({ searchParams }: LoginPageProps) {
+  const params = await searchParams;
+  const justVerified = params.verified === "true";
+
   return (
     <>
       <h1 className="mb-6 text-2xl font-bold text-gray-900">Welcome back</h1>
+
+      {justVerified && (
+        <div className="mb-5 flex items-start gap-2.5 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-800 ring-1 ring-green-200">
+          <span className="mt-0.5 text-base">✅</span>
+          <span>
+            <span className="font-semibold">Email verified!</span> You can now sign in to your account.
+          </span>
+        </div>
+      )}
+
       <LoginForm />
 
       <div className="my-4 flex items-center gap-3">

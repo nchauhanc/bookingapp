@@ -28,7 +28,9 @@ export default withAuth(
           pathname.startsWith("/register") ||
           pathname.startsWith("/api/auth") ||
           pathname.startsWith("/api/register") ||
-          pathname.startsWith("/p/")   // public professional schedule pages
+          pathname.startsWith("/p/") ||          // public professional schedule pages
+          pathname.startsWith("/verify-email") ||  // email verification page
+          pathname.startsWith("/api/auth/verify-email") // email verification API
         ) {
           return true;
         }

@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import crypto from "crypto";
 import { prisma } from "@/lib/prisma";
 import { hashPassword } from "@/lib/hash";
 import { registerSchema } from "@/lib/validations";
+import { sendVerificationEmail } from "@/lib/email";
+
+const COOLDOWN_MS = 5 * 60 * 1000;  // 5 minutes
+const TOKEN_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,20 +24,72 @@ export async function POST(req: NextRequest) {
 
     const existing = await prisma.user.findUnique({ where: { email } });
     if (existing) {
+      // If already verified, tell them to log in
+      if (existing.emailVerified) {
+        return NextResponse.json(
+          { error: "Email already registered. Please sign in." },
+          { status: 409 }
+        );
+      }
+
+      // Already registered but not verified — check cooldown before resending
+      const pendingToken = await prisma.verificationToken.findFirst({
+        where: { identifier: email },
+      });
+      if (pendingToken) {
+        const sentAt = new Date(pendingToken.expires.getTime() - TOKEN_TTL_MS);
+        const cooldownUntil = new Date(sentAt.getTime() + COOLDOWN_MS);
+        if (new Date() < cooldownUntil) {
+          const secsLeft = Math.ceil((cooldownUntil.getTime() - Date.now()) / 1000);
+          return NextResponse.json(
+            {
+              error: `A verification email was already sent. Please check your inbox or wait ${Math.ceil(secsLeft / 60)} minute(s) before trying again.`,
+            },
+            { status: 429, headers: { "Retry-After": String(secsLeft) } }
+          );
+        }
+      }
+
+      // Cooldown passed — resend a fresh token
+      await prisma.verificationToken.deleteMany({ where: { identifier: email } });
+      const token = crypto.randomBytes(32).toString("hex");
+      await prisma.verificationToken.create({
+        data: {
+          identifier: email,
+          token,
+          expires: new Date(Date.now() + TOKEN_TTL_MS),
+        },
+      });
+      await sendVerificationEmail(email, token).catch(console.error);
       return NextResponse.json(
-        { error: "Email already registered" },
-        { status: 409 }
+        { message: "Verification email resent. Please check your inbox." },
+        { status: 200 }
       );
     }
 
+    // New user — create account
     const hashedPassword = await hashPassword(password);
-
-    const user = await prisma.user.create({
+    await prisma.user.create({
       data: { name, email, password: hashedPassword, role },
-      select: { id: true, name: true, email: true, role: true },
     });
 
-    return NextResponse.json(user, { status: 201 });
+    // Generate and store verification token
+    const token = crypto.randomBytes(32).toString("hex");
+    await prisma.verificationToken.create({
+      data: {
+        identifier: email,
+        token,
+        expires: new Date(Date.now() + TOKEN_TTL_MS),
+      },
+    });
+
+    // Send verification email (non-blocking — don't fail registration if email fails)
+    await sendVerificationEmail(email, token).catch(console.error);
+
+    return NextResponse.json(
+      { message: "Registration successful. Please check your email to verify your account." },
+      { status: 201 }
+    );
   } catch {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
