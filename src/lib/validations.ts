@@ -34,6 +34,15 @@ export const createRecurringSchema = z.object({
 
 export type CreateRecurringInput = z.infer<typeof createRecurringSchema>;
 
+export const updateProfileSchema = z.object({
+  name:       z.string().min(2, "Name must be at least 2 characters").max(80),
+  speciality: z.string().max(60, "Title too long").optional().or(z.literal("")),
+  tagline:    z.string().max(100, "Tagline must be 100 characters or fewer").optional().or(z.literal("")),
+  bio:        z.string().max(600, "Bio must be 600 characters or fewer").optional().or(z.literal("")),
+});
+
+export type UpdateProfileInput = z.infer<typeof updateProfileSchema>;
+
 export const createBookingSchema = z.object({
   slotId: z.string().min(1, "Slot ID is required"),
   notes: z.string().max(500, "Notes too long").optional(),

@@ -40,6 +40,7 @@ export default async function PublicSchedulePage({ params }: Props) {
         image: true,
         bio: true,
         speciality: true,
+        tagline: true,
         role: true,
       },
     }),
@@ -109,6 +110,11 @@ export default async function PublicSchedulePage({ params }: Props) {
               <div className="mt-1">
                 <Badge label={professional.speciality} variant="blue" />
               </div>
+            )}
+            {professional.tagline && (
+              <p className="mt-1.5 text-sm text-gray-500 italic">
+                &ldquo;{professional.tagline}&rdquo;
+              </p>
             )}
             {professional.bio && (
               <p className="mt-2 text-sm text-gray-500">{professional.bio}</p>

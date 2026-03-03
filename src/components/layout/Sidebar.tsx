@@ -8,6 +8,7 @@ const professionalLinks = [
   { href: "/professional", label: "Dashboard", icon: "🏠" },
   { href: "/professional/availability", label: "Availability", icon: "📅" },
   { href: "/professional/bookings", label: "Bookings", icon: "📋" },
+  { href: "/professional/profile", label: "My Profile", icon: "👤" },
 ];
 
 const customerLinks = [

@@ -23,6 +23,7 @@ model User {
   password      String? // null for OAuth-only users
   role          String    @default("CUSTOMER") // "PROFESSIONAL" | "CUSTOMER"
   bio           String?
+  tagline       String? // short punchy line, e.g. "10+ years · All levels welcome"
   speciality    String? // e.g. "Dentist", "Coach"
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
