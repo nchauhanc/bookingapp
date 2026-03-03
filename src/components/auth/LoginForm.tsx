@@ -7,7 +7,11 @@ import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 
-export default function LoginForm() {
+interface LoginFormProps {
+  callbackUrl?: string;
+}
+
+export default function LoginForm({ callbackUrl }: LoginFormProps) {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,8 +36,9 @@ export default function LoginForm() {
       return;
     }
 
-    // Redirect based on role - NextAuth will handle this via the session
-    router.push("/");
+    // Return to the originating page (e.g. a professional's public page),
+    // or fall through to "/" which the middleware redirects to the right dashboard.
+    router.push(callbackUrl ?? "/");
     router.refresh();
   }
 

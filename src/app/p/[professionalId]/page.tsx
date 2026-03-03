@@ -82,13 +82,13 @@ export default async function PublicSchedulePage({ params }: Props) {
           {!session ? (
             <div className="flex items-center gap-2">
               <Link
-                href="/login"
+                href={`/login?callbackUrl=/p/${professionalId}`}
                 className="rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
               >
                 Sign in
               </Link>
               <Link
-                href="/register"
+                href={`/register?callbackUrl=/p/${professionalId}`}
                 className="rounded-lg bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700 transition-colors"
               >
                 Sign up

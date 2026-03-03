@@ -3,12 +3,15 @@ import LoginForm from "@/components/auth/LoginForm";
 import OAuthButton from "@/components/auth/OAuthButton";
 
 interface LoginPageProps {
-  searchParams: Promise<{ verified?: string }>;
+  searchParams: Promise<{ verified?: string; callbackUrl?: string }>;
 }
 
 export default async function LoginPage({ searchParams }: LoginPageProps) {
   const params = await searchParams;
   const justVerified = params.verified === "true";
+  // Only allow relative paths to prevent open-redirect attacks
+  const callbackUrl =
+    params.callbackUrl?.startsWith("/") ? params.callbackUrl : undefined;
 
   return (
     <>
@@ -23,7 +26,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         </div>
       )}
 
-      <LoginForm />
+      <LoginForm callbackUrl={callbackUrl} />
 
       <div className="my-4 flex items-center gap-3">
         <hr className="flex-1 border-gray-200" />
