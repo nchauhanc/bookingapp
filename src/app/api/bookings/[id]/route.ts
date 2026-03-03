@@ -2,6 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import {
+  sendBookingCancellationToCustomer,
+  sendBookingCancellationToProfessional,
+  type BookingEmailData,
+} from "@/lib/email";
 
 // DELETE /api/bookings/:id — cancel a booking (Customer only)
 export async function DELETE(
@@ -19,7 +24,10 @@ export async function DELETE(
 
   const booking = await prisma.booking.findUnique({
     where: { id },
-    include: { slot: true },
+    include: {
+      slot: { include: { professional: true } },
+      customer: true,
+    },
   });
 
   if (!booking) {
@@ -43,6 +51,23 @@ export async function DELETE(
       data: { isBooked: false },
     }),
   ]);
+
+  // Fire cancellation emails to both parties (non-blocking)
+  const emailData: BookingEmailData = {
+    customerName:      booking.customer.name ?? "Customer",
+    customerEmail:     booking.customer.email!,
+    professionalName:  booking.slot.professional.name ?? "Professional",
+    professionalEmail: booking.slot.professional.email!,
+    speciality:        booking.slot.professional.speciality,
+    startTime:         booking.slot.startTime,
+    endTime:           booking.slot.endTime,
+    notes:             booking.notes,
+  };
+
+  Promise.all([
+    sendBookingCancellationToCustomer(emailData),
+    sendBookingCancellationToProfessional(emailData),
+  ]).catch(console.error);
 
   return NextResponse.json({ success: true });
 }

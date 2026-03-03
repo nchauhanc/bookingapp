@@ -3,6 +3,11 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { createBookingSchema } from "@/lib/validations";
+import {
+  sendBookingConfirmationToCustomer,
+  sendBookingConfirmationToProfessional,
+  type BookingEmailData,
+} from "@/lib/email";
 
 // POST /api/bookings — create a booking (Customer only)
 export async function POST(req: NextRequest) {
@@ -46,9 +51,7 @@ export async function POST(req: NextRequest) {
         status: "CONFIRMED",
       },
       include: {
-        slot: {
-          include: { professional: true },
-        },
+        slot: { include: { professional: true } },
         customer: true,
       },
     });
@@ -60,6 +63,23 @@ export async function POST(req: NextRequest) {
 
     return newBooking;
   });
+
+  // Fire confirmation emails to both parties (non-blocking — never fails the request)
+  const emailData: BookingEmailData = {
+    customerName:      booking.customer.name ?? "Customer",
+    customerEmail:     booking.customer.email!,
+    professionalName:  booking.slot.professional.name ?? "Professional",
+    professionalEmail: booking.slot.professional.email!,
+    speciality:        booking.slot.professional.speciality,
+    startTime:         booking.slot.startTime,
+    endTime:           booking.slot.endTime,
+    notes:             booking.notes,
+  };
+
+  Promise.all([
+    sendBookingConfirmationToCustomer(emailData),
+    sendBookingConfirmationToProfessional(emailData),
+  ]).catch(console.error);
 
   return NextResponse.json(booking, { status: 201 });
 }
