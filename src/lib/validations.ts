@@ -1,5 +1,16 @@
 import { z } from "zod";
 
+/** Convert any string to a URL-safe lowercase slug, e.g. "Dr. Alice Chen" → "dr-alice-chen" */
+export function toSlug(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")   // strip non-alphanumeric except spaces & hyphens
+    .trim()
+    .replace(/\s+/g, "-")            // spaces → hyphens
+    .replace(/-+/g, "-")             // collapse consecutive hyphens
+    .slice(0, 40);                   // max 40 chars
+}
+
 export const registerSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
@@ -36,6 +47,13 @@ export type CreateRecurringInput = z.infer<typeof createRecurringSchema>;
 
 export const updateProfileSchema = z.object({
   name:       z.string().min(2, "Name must be at least 2 characters").max(80),
+  username:   z
+    .string()
+    .min(2, "Username must be at least 2 characters")
+    .max(40, "Username must be 40 characters or fewer")
+    .regex(/^[a-z0-9-]+$/, "Only lowercase letters, numbers and hyphens allowed")
+    .optional()
+    .or(z.literal("")),
   speciality: z.string().max(60, "Title too long").optional().or(z.literal("")),
   tagline:    z.string().max(100, "Tagline must be 100 characters or fewer").optional().or(z.literal("")),
   bio:        z.string().max(600, "Bio must be 600 characters or fewer").optional().or(z.literal("")),

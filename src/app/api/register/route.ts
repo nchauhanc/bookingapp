@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import { prisma } from "@/lib/prisma";
 import { hashPassword } from "@/lib/hash";
-import { registerSchema } from "@/lib/validations";
+import { registerSchema, toSlug } from "@/lib/validations";
 import { sendVerificationEmail } from "@/lib/email";
 
 const COOLDOWN_MS = 5 * 60 * 1000;  // 5 minutes
@@ -67,10 +67,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // New user — create account
+    // New user — generate a unique username slug from their name
     const hashedPassword = await hashPassword(password);
+    const baseSlug = toSlug(name) || "user";
+    let username = baseSlug;
+    let suffix = 1;
+    while (await prisma.user.findUnique({ where: { username } })) {
+      username = `${baseSlug}-${suffix++}`;
+    }
     await prisma.user.create({
-      data: { name, email, password: hashedPassword, role },
+      data: { name, email, password: hashedPassword, role, username },
     });
 
     // Generate and store verification token

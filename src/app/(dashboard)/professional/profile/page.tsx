@@ -14,6 +14,7 @@ interface ProfileData {
   name: string | null;
   email: string | null;
   image: string | null;
+  username: string | null;
   speciality: string | null;
   tagline: string | null;
   bio: string | null;
@@ -28,6 +29,7 @@ export default function ProfilePage() {
 
   // form state
   const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [speciality, setSpeciality] = useState("");
   const [tagline, setTagline] = useState("");
   const [bio, setBio] = useState("");
@@ -44,6 +46,7 @@ export default function ProfilePage() {
       .then((data: ProfileData) => {
         setProfile(data);
         setName(data.name ?? "");
+        setUsername(data.username ?? "");
         setSpeciality(data.speciality ?? "");
         setTagline(data.tagline ?? "");
         setBio(data.bio ?? "");
@@ -59,7 +62,7 @@ export default function ProfilePage() {
     const res = await fetch("/api/profile", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, speciality, tagline, bio }),
+      body: JSON.stringify({ name, username, speciality, tagline, bio }),
     });
 
     const data = await res.json();
@@ -71,11 +74,18 @@ export default function ProfilePage() {
     }
 
     setProfile(data);
+    setUsername(data.username ?? "");
     // Update the NextAuth session so the name in the header updates too
     await updateSession({ name: data.name });
     setSuccess(true);
     setTimeout(() => setSuccess(false), 4000);
   }
+
+  // Build the live public URL for the preview
+  const publicHandle = username || profile?.id || "";
+  const publicUrl = typeof window !== "undefined"
+    ? `${window.location.origin}/p/${publicHandle}`
+    : `/p/${publicHandle}`;
 
   if (loading) {
     return (
@@ -122,6 +132,34 @@ export default function ProfilePage() {
             placeholder="Your full name"
             maxLength={80}
           />
+
+          {/* Username / public link slug */}
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="profile-username" className="text-sm font-medium text-gray-700">
+              Username <span className="font-normal text-gray-400">(your public link)</span>
+            </label>
+            <div className="flex items-center rounded-lg border border-gray-300 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-transparent overflow-hidden">
+              <span className="shrink-0 bg-gray-50 px-3 py-2 text-sm text-gray-400 border-r border-gray-300 select-none">
+                bookslot/p/
+              </span>
+              <input
+                id="profile-username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
+                placeholder="your-name"
+                maxLength={40}
+                className="flex-1 px-3 py-2 text-sm text-gray-900 bg-white placeholder:text-gray-400 focus:outline-none"
+              />
+            </div>
+            <div className="flex justify-between">
+              <p className="text-xs text-gray-400">
+                Lowercase letters, numbers and hyphens only.
+              </p>
+              <p className={["text-xs tabular-nums", username.length > 36 ? "text-orange-500" : "text-gray-400"].join(" ")}>
+                {username.length}/40
+              </p>
+            </div>
+          </div>
 
           <Input
             id="profile-speciality"
@@ -174,6 +212,34 @@ export default function ProfilePage() {
           <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-500">
             Preview
           </h2>
+
+          {/* Public link box */}
+          <div className="flex flex-col gap-1.5 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-gray-200">
+            <p className="text-xs font-medium text-gray-500">Your booking link</p>
+            <div className="flex items-center gap-2">
+              <p className="flex-1 truncate rounded-lg bg-indigo-50 px-3 py-2 text-sm font-mono text-indigo-700 ring-1 ring-indigo-100">
+                {publicUrl}
+              </p>
+              <button
+                type="button"
+                onClick={() => navigator.clipboard.writeText(publicUrl)}
+                className="shrink-0 rounded-lg px-2.5 py-2 text-xs font-medium text-gray-500 hover:bg-gray-100 transition-colors"
+                title="Copy link"
+              >
+                Copy
+              </button>
+            </div>
+            <a
+              href={`/p/${publicHandle}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-indigo-500 hover:underline"
+            >
+              Open in new tab →
+            </a>
+          </div>
+
+          {/* Profile card preview */}
           <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200">
             <p className="mb-3 text-xs text-gray-400 font-medium">
               How customers see your profile
@@ -207,18 +273,6 @@ export default function ProfilePage() {
               </div>
             </div>
           </div>
-
-          {/* Link to public page */}
-          {profile?.id && (
-            <a
-              href={`/p/${profile.id}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-indigo-600 hover:underline font-medium"
-            >
-              <span>🔗</span> View your public page →
-            </a>
-          )}
         </div>
       </div>
     </div>

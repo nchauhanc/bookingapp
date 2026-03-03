@@ -18,6 +18,7 @@ model User {
   id            String    @id @default(cuid())
   name          String?
   email         String    @unique
+  username      String?   @unique // URL-safe slug, e.g. "bob-trainer" → /p/bob-trainer
   emailVerified DateTime?
   image         String?
   password      String? // null for OAuth-only users

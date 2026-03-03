@@ -11,12 +11,29 @@ interface Props {
   params: Promise<{ professionalId: string }>;
 }
 
+/** Resolve a URL handle that may be a username slug OR a raw cuid. */
+async function resolveProfessional(handle: string) {
+  return prisma.user.findFirst({
+    where: {
+      OR: [{ username: handle }, { id: handle }],
+      role: "PROFESSIONAL",
+    },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      image: true,
+      bio: true,
+      speciality: true,
+      tagline: true,
+      role: true,
+    },
+  });
+}
+
 export async function generateMetadata({ params }: Props) {
   const { professionalId } = await params;
-  const professional = await prisma.user.findFirst({
-    where: { id: professionalId, role: "PROFESSIONAL" },
-    select: { name: true, speciality: true },
-  });
+  const professional = await resolveProfessional(professionalId);
   if (!professional) return {};
   return {
     title: `Book with ${professional.name ?? "Professional"} — BookSlot`,
@@ -29,32 +46,22 @@ export async function generateMetadata({ params }: Props) {
 export default async function PublicSchedulePage({ params }: Props) {
   const { professionalId } = await params;
 
-  const [session, professional, slots] = await Promise.all([
+  // Resolve user first so we can use the DB id for the slots query
+  const [session, professional] = await Promise.all([
     getServerSession(authOptions),
-    prisma.user.findFirst({
-      where: { id: professionalId, role: "PROFESSIONAL" },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        image: true,
-        bio: true,
-        speciality: true,
-        tagline: true,
-        role: true,
-      },
-    }),
-    prisma.slot.findMany({
-      where: {
-        professionalId,
-        isBooked: false,
-        startTime: { gte: new Date() },
-      },
-      orderBy: { startTime: "asc" },
-    }),
+    resolveProfessional(professionalId),
   ]);
 
   if (!professional) notFound();
+
+  const slots = await prisma.slot.findMany({
+    where: {
+      professionalId: professional.id,   // always the real cuid
+      isBooked: false,
+      startTime: { gte: new Date() },
+    },
+    orderBy: { startTime: "asc" },
+  });
 
   // Serialise dates to strings for the client component
   const serialisedSlots = slots.map((s) => ({
@@ -127,7 +134,7 @@ export default async function PublicSchedulePage({ params }: Props) {
           <h2 className="text-lg font-semibold text-gray-900">Available Slots</h2>
           <PublicBookingSection
             slots={serialisedSlots}
-            professionalId={professionalId}
+            professionalId={professional.id}
             sessionRole={(session?.user?.role as string) ?? null}
             sessionUserId={session?.user?.id ?? null}
           />

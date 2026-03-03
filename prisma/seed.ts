@@ -13,10 +13,11 @@ async function main() {
 
   const alice = await prisma.user.upsert({
     where: { email: "alice@bookslot.dev" },
-    update: { emailVerified: new Date() },
+    update: { emailVerified: new Date(), username: "dr-alice-chen" },
     create: {
       name: "Dr. Alice Chen",
       email: "alice@bookslot.dev",
+      username: "dr-alice-chen",
       password: await hash("password123"),
       role: "PROFESSIONAL",
       speciality: "Dentist",
@@ -27,10 +28,11 @@ async function main() {
 
   const bob = await prisma.user.upsert({
     where: { email: "bob@bookslot.dev" },
-    update: { emailVerified: new Date() },
+    update: { emailVerified: new Date(), username: "bob-trainer" },
     create: {
       name: "Bob Trainer",
       email: "bob@bookslot.dev",
+      username: "bob-trainer",
       password: await hash("password123"),
       role: "PROFESSIONAL",
       speciality: "Personal Trainer",
@@ -41,10 +43,11 @@ async function main() {
 
   const sara = await prisma.user.upsert({
     where: { email: "sara@bookslot.dev" },
-    update: { emailVerified: new Date() },
+    update: { emailVerified: new Date(), username: "sara-wellness" },
     create: {
       name: "Sara Wellness",
       email: "sara@bookslot.dev",
+      username: "sara-wellness",
       password: await hash("password123"),
       role: "PROFESSIONAL",
       speciality: "Life Coach",

@@ -8,7 +8,7 @@ export default async function ProfessionalDashboard() {
   const session = await getServerSession(authOptions);
   if (!session?.user) return null;
 
-  const [totalSlots, bookedSlots, upcomingBookings] = await Promise.all([
+  const [totalSlots, bookedSlots, upcomingBookings, userRecord] = await Promise.all([
     prisma.slot.count({ where: { professionalId: session.user.id } }),
     prisma.slot.count({
       where: { professionalId: session.user.id, isBooked: true },
@@ -21,6 +21,10 @@ export default async function ProfessionalDashboard() {
         },
         status: "CONFIRMED",
       },
+    }),
+    prisma.user.findUnique({
+      where: { id: session.user.id },
+      select: { username: true },
     }),
   ]);
 
@@ -84,7 +88,7 @@ export default async function ProfessionalDashboard() {
         <p className="text-sm text-gray-500 mb-3">
           Send this link to customers — they can browse your slots and book directly.
         </p>
-        <ShareLink userId={session.user.id} />
+        <ShareLink userId={session.user.id} username={userRecord?.username ?? null} />
       </div>
     </div>
   );

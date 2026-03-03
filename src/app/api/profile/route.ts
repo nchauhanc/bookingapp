@@ -4,6 +4,18 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { updateProfileSchema } from "@/lib/validations";
 
+const PROFILE_SELECT = {
+  id:         true,
+  name:       true,
+  email:      true,
+  image:      true,
+  username:   true,
+  speciality: true,
+  tagline:    true,
+  bio:        true,
+  role:       true,
+} as const;
+
 // GET /api/profile — fetch the current user's profile fields
 export async function GET() {
   const session = await getServerSession(authOptions);
@@ -13,16 +25,7 @@ export async function GET() {
 
   const user = await prisma.user.findUnique({
     where: { id: session.user.id },
-    select: {
-      id: true,
-      name: true,
-      email: true,
-      image: true,
-      speciality: true,
-      tagline: true,
-      bio: true,
-      role: true,
-    },
+    select: PROFILE_SELECT,
   });
 
   if (!user) {
@@ -48,26 +51,29 @@ export async function PUT(req: NextRequest) {
     );
   }
 
-  const { name, speciality, tagline, bio } = parsed.data;
+  const { name, username, speciality, tagline, bio } = parsed.data;
+
+  // Check username uniqueness (ignore own current username)
+  if (username) {
+    const conflict = await prisma.user.findUnique({ where: { username } });
+    if (conflict && conflict.id !== session.user.id) {
+      return NextResponse.json(
+        { error: "That username is already taken. Please choose another." },
+        { status: 409 }
+      );
+    }
+  }
 
   const user = await prisma.user.update({
     where: { id: session.user.id },
     data: {
-      name:       name,
+      name,
+      username:   username   || null,
       speciality: speciality || null,
       tagline:    tagline    || null,
       bio:        bio        || null,
     },
-    select: {
-      id: true,
-      name: true,
-      email: true,
-      image: true,
-      speciality: true,
-      tagline: true,
-      bio: true,
-      role: true,
-    },
+    select: PROFILE_SELECT,
   });
 
   return NextResponse.json(user);

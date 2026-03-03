@@ -5,16 +5,19 @@ import Button from "@/components/ui/Button";
 
 interface ShareLinkProps {
   userId: string;
+  username?: string | null;
 }
 
-export default function ShareLink({ userId }: ShareLinkProps) {
+export default function ShareLink({ userId, username }: ShareLinkProps) {
   const [url, setUrl] = useState("");
   const [copied, setCopied] = useState(false);
 
-  // Build URL client-side so it uses the actual deployed origin
+  // Build URL client-side so it uses the actual deployed origin.
+  // Prefer the human-readable username slug; fall back to raw cuid.
   useEffect(() => {
-    setUrl(`${window.location.origin}/p/${userId}`);
-  }, [userId]);
+    const handle = username || userId;
+    setUrl(`${window.location.origin}/p/${handle}`);
+  }, [userId, username]);
 
   async function handleCopy() {
     if (!url) return;
