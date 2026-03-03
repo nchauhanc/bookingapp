@@ -6,7 +6,7 @@ import { format } from "date-fns";
 import WeekCalendar, { WeekSlot } from "@/components/calendar/WeekCalendar";
 import Modal from "@/components/ui/Modal";
 import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
+import Textarea from "@/components/ui/Textarea";
 import EmptyState from "@/components/ui/EmptyState";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 
@@ -152,14 +152,14 @@ export default function PublicBookingSection({
                 {format(new Date(selectedSlot.endTime), "HH:mm")}
               </p>
             </div>
-            <Input
+            <Textarea
               label="Note for the professional (optional)"
               id="public-booking-notes"
-              type="text"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="Any special request…"
+              placeholder="e.g. I'm a beginner, I have a knee injury, my goal is weight loss…"
               maxLength={500}
+              hint="Help them prepare for your session."
             />
             <div className="flex gap-3">
               <Button

@@ -101,7 +101,10 @@ function BookingCard({
         </p>
         <p className="text-sm text-gray-500">{customer.email}</p>
         {booking.notes && (
-          <p className="mt-1 text-xs text-gray-400 italic">"{booking.notes}"</p>
+          <div className="mt-2 flex items-start gap-1.5 rounded-lg bg-amber-50 px-2.5 py-1.5 ring-1 ring-amber-100">
+            <span className="mt-0.5 shrink-0 text-xs">📝</span>
+            <p className="text-xs text-amber-800 leading-relaxed">{booking.notes}</p>
+          </div>
         )}
       </div>
       <div className="flex flex-col items-end gap-2">

@@ -6,7 +6,7 @@ import { useAvailableSlots } from "@/hooks/useSlots";
 import WeekCalendar, { WeekSlot } from "@/components/calendar/WeekCalendar";
 import Modal from "@/components/ui/Modal";
 import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
+import Textarea from "@/components/ui/Textarea";
 import Spinner from "@/components/ui/Spinner";
 import EmptyState from "@/components/ui/EmptyState";
 import ErrorMessage from "@/components/ui/ErrorMessage";
@@ -109,14 +109,14 @@ export default function BookPage({ params }: Props) {
               </p>
             </div>
 
-            <Input
+            <Textarea
               label="Note for the professional (optional)"
               id="booking-notes"
-              type="text"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="Any special request…"
+              placeholder="e.g. I'm a beginner, I have a knee injury, my goal is weight loss…"
               maxLength={500}
+              hint="Help them prepare for your session."
             />
 
             <div className="flex gap-3">
