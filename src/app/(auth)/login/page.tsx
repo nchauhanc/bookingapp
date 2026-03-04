@@ -34,7 +34,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         <hr className="flex-1 border-gray-200" />
       </div>
 
-      <OAuthButton provider="google" callbackUrl="/" />
+      <OAuthButton provider="google" callbackUrl={callbackUrl ?? "/"} />
 
       <p className="mt-6 text-center text-sm text-gray-500">
         No account?{" "}

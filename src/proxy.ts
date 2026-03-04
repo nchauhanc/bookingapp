@@ -6,6 +6,22 @@ export default withAuth(
     const { pathname } = req.nextUrl;
     const token = req.nextauth.token;
     const role = token?.role as string | undefined;
+    const needsOnboarding = token?.needsOnboarding;
+
+    // New Google users must choose their role before accessing anything else
+    if (
+      needsOnboarding &&
+      !pathname.startsWith("/onboarding") &&
+      !pathname.startsWith("/api/onboarding") &&
+      !pathname.startsWith("/api/auth")
+    ) {
+      return NextResponse.redirect(new URL("/onboarding", req.url));
+    }
+
+    // Skip role-based protection for onboarding routes
+    if (pathname.startsWith("/onboarding") || pathname.startsWith("/api/onboarding")) {
+      return NextResponse.next();
+    }
 
     // Role-based route protection
     if (pathname.startsWith("/professional") && role !== "PROFESSIONAL") {
@@ -21,20 +37,20 @@ export default withAuth(
     callbacks: {
       authorized: ({ token, req }) => {
         const { pathname } = req.nextUrl;
-        // Public routes
+        // Public routes — no token required
         if (
           pathname === "/" ||
           pathname.startsWith("/login") ||
           pathname.startsWith("/register") ||
           pathname.startsWith("/api/auth") ||
           pathname.startsWith("/api/register") ||
-          pathname.startsWith("/p/") ||          // public professional schedule pages
-          pathname.startsWith("/verify-email") ||  // email verification page
-          pathname.startsWith("/api/auth/verify-email") // email verification API
+          pathname.startsWith("/p/") ||
+          pathname.startsWith("/verify-email") ||
+          pathname.startsWith("/api/auth/verify-email")
         ) {
           return true;
         }
-        // All other routes require a valid token
+        // All other routes (including /onboarding) require a signed-in user
         return !!token;
       },
     },
