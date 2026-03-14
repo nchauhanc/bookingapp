@@ -53,7 +53,9 @@
       "speciality": "Personal Trainer",
       "tagline": "Helping you move better, one session at a time",
       "availableSlots": "Available Slots",
-      "selectSlot": "Select a slot to book"
+      "selectSlot": "Select a slot to book",
+      "signUp": "Sign up",
+      "signIn": "Sign in"
     },
     "howItWorks": {
       "title": "How it works",

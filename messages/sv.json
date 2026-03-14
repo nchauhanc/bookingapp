@@ -53,7 +53,9 @@
       "speciality": "Personlig tränare",
       "tagline": "Hjälper dig röra dig bättre, ett pass i taget",
       "availableSlots": "Lediga tider",
-      "selectSlot": "Välj en tid för att boka"
+      "selectSlot": "Välj en tid för att boka",
+      "signUp": "Registrera dig",
+      "signIn": "Logga in"
     },
     "howItWorks": {
       "title": "Så fungerar det",
