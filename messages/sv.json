@@ -144,6 +144,10 @@
     }
   },
   "Browse": {
+    "meta": {
+      "title": "Bläddra bland proffs",
+      "description": "Hitta och boka coacher, handledare, tränare, terapeuter och mer. Se verklig tillgänglighet och boka på några sekunder."
+    },
     "title": "Hitta ett proffs",
     "subtitle": "Bläddra bland coacher, handledare, tränare, terapeuter och mer. Inget konto krävs.",
     "empty": {
@@ -159,6 +163,10 @@
     }
   },
   "Pricing": {
+    "meta": {
+      "title": "Enkelt och gratis",
+      "description": "BookVra är helt gratis. Inga prenumerationer, inget kreditkort, inga dolda avgifter. Obegränsade bokningar för soloprofessionella."
+    },
     "title": "Enkla, ärliga priser",
     "subtitle": "BookVra är gratis att använda. Inga prenumerationer, inga dolda avgifter, inget kreditkort krävs.",
     "tier": {
@@ -200,6 +208,10 @@
     }
   },
   "About": {
+    "meta": {
+      "title": "Om BookVra | Gratis schemaläggning för yrkesverksamma",
+      "description": "BookVra är ett schemaläggningsverktyg byggt för soloprofessionella som är trötta på att hantera bokningar via WhatsApp eller e-post."
+    },
     "lastUpdated": "Senast uppdaterad: mars 2026",
     "title": "Om BookVra",
     "p1": "BookVra är ett bokningsverktyg byggt för egenföretagare — coacher, handledare, tränare, terapeuter, konsulter och alla andra som försörjer sig genom enskilda sessioner.",

@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import Footer from "@/components/layout/Footer";
 import PublicNav from "@/components/layout/PublicNav";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Pricing" });
+  return {
+    title: t("meta.title"),          // template → "Simple Free Pricing | BookVra"
+    description: t("meta.description"),
+  };
+}
 
 export default async function PricingPage() {
   const t = await getTranslations("Pricing");

@@ -1,9 +1,23 @@
+import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import Footer from "@/components/layout/Footer";
 import PublicNav from "@/components/layout/PublicNav";
 import { scoreProfessional } from "@/lib/scoring";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Browse" });
+  return {
+    title: t("meta.title"),          // template → "Browse Professionals | BookVra"
+    description: t("meta.description"),
+  };
+}
 
 export default async function BrowsePage() {
   const t = await getTranslations("Browse");
