@@ -10,6 +10,7 @@ import {
   isSameDay,
   isToday,
 } from "date-fns";
+import { useTranslations } from "next-intl";
 import SlotBadge from "./SlotBadge";
 import Button from "@/components/ui/Button";
 
@@ -36,6 +37,7 @@ export default function WeekCalendar({
   onDeleteSlot,
   onBookVra,
 }: WeekCalendarProps) {
+  const t = useTranslations("WeekCalendar");
   const [weekStart, setWeekStart] = useState(() =>
     startOfWeek(new Date(), { weekStartsOn: 1 }) // Monday
   );
@@ -56,7 +58,7 @@ export default function WeekCalendar({
           onClick={() => setWeekStart(subWeeks(weekStart, 1))}
           aria-label="Previous week"
         >
-          ← Prev
+          {t("prev")}
         </Button>
         <span className="text-sm font-semibold text-gray-700">
           {format(weekStart, "MMM d")} –{" "}
@@ -68,7 +70,7 @@ export default function WeekCalendar({
           onClick={() => setWeekStart(addWeeks(weekStart, 1))}
           aria-label="Next week"
         >
-          Next →
+          {t("next")}
         </Button>
       </div>
 
@@ -129,7 +131,7 @@ export default function WeekCalendar({
                     className="rounded-lg border-2 border-dashed border-gray-200 py-2 text-xs text-gray-400 hover:border-indigo-300 hover:text-indigo-500 transition-colors"
                     aria-label={`Add slot on ${format(day, "EEE MMM d")}`}
                   >
-                    + Add
+                    {t("addSlot")}
                   </button>
                 )}
               </div>
@@ -142,11 +144,11 @@ export default function WeekCalendar({
       <div className="flex items-center gap-4 text-xs text-gray-500 pt-1">
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-3 w-3 rounded bg-emerald-200 border border-emerald-300" />
-          Available
+          {t("available")}
         </span>
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-3 w-3 rounded bg-orange-200 border border-orange-300" />
-          Booked
+          {t("booked")}
         </span>
       </div>
     </div>

@@ -1,21 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { useSession } from "next-auth/react";
-
-const professionalLinks = [
-  { href: "/professional", label: "Dashboard", icon: "🏠" },
-  { href: "/professional/availability", label: "Availability", icon: "📅" },
-  { href: "/professional/bookings", label: "Bookings", icon: "📋" },
-  { href: "/professional/profile", label: "My Profile", icon: "👤" },
-];
-
-const customerLinks = [
-  { href: "/customer", label: "Dashboard", icon: "🏠" },
-  { href: "/customer/browse", label: "Browse", icon: "🔍" },
-  { href: "/customer/bookings", label: "My Bookings", icon: "📋" },
-];
+import { useTranslations } from "next-intl";
 
 interface SidebarProps {
   onClose?: () => void;
@@ -24,8 +12,23 @@ interface SidebarProps {
 export default function Sidebar({ onClose }: SidebarProps) {
   const pathname = usePathname();
   const { data: session } = useSession();
-  const links =
-    session?.user?.role === "PROFESSIONAL" ? professionalLinks : customerLinks;
+  const role = session?.user?.role;
+  const t = useTranslations("Sidebar");
+
+  const professionalLinks = [
+    { href: "/professional" as const, label: t("pro.dashboard"), icon: "🏠" },
+    { href: "/professional/availability" as const, label: t("pro.availability"), icon: "📅" },
+    { href: "/professional/bookings" as const, label: t("pro.bookings"), icon: "📋" },
+    { href: "/professional/profile" as const, label: t("pro.profile"), icon: "👤" },
+  ];
+
+  const customerLinks = [
+    { href: "/customer" as const, label: t("customer.dashboard"), icon: "🏠" },
+    { href: "/customer/browse" as const, label: t("customer.browse"), icon: "🔍" },
+    { href: "/customer/bookings" as const, label: t("customer.bookings"), icon: "📋" },
+  ];
+
+  const links = role === "PROFESSIONAL" ? professionalLinks : customerLinks;
 
   return (
     <nav className="flex flex-col gap-1 p-4">

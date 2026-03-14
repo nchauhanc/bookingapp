@@ -1,0 +1,552 @@
+{
+  "Meta": {
+    "title": "BookVra — Professional Scheduling",
+    "description": "Book appointments with professionals or manage your availability."
+  },
+  "Common": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "getStarted": "Get started",
+    "save": "Save changes",
+    "cancel": "Cancel",
+    "or": "or",
+    "loading": "Loading…",
+    "dashboard": "Dashboard →",
+    "copy": "Copy",
+    "dismiss": "Dismiss"
+  },
+  "Nav": {
+    "pricing": "Pricing",
+    "browse": "Browse",
+    "signIn": "Sign in",
+    "getStarted": "Get started"
+  },
+  "Footer": {
+    "tagline": "The scheduling tool for solo professionals.",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "links": {
+      "pricing": "Pricing",
+      "browseProfessionals": "Browse Professionals",
+      "getStarted": "Get started",
+      "about": "About",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "copyright": "© {year} BookVra. All rights reserved."
+  },
+  "Landing": {
+    "badge": "✨ Professional scheduling, simplified",
+    "hero": {
+      "title1": "Book appointments.",
+      "title2": "Grow your practice.",
+      "desc": "Professionals set their availability. Customers book in seconds. No back-and-forth. No missed bookings.",
+      "cta1": "Start for free →",
+      "cta2": "Browse professionals"
+    },
+    "preview": {
+      "title": "See it in action",
+      "subtitle": "A professional's public page — live availability, instant booking.",
+      "proName": "Alex Johnson",
+      "speciality": "Personal Trainer",
+      "tagline": "Helping you move better, one session at a time",
+      "availableSlots": "Available Slots",
+      "selectSlot": "Select a slot to book"
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "subtitle": "Simple for professionals. Even simpler for customers.",
+      "forPros": "For Professionals",
+      "forCustomers": "For Customers",
+      "proSteps": [
+        {
+          "title": "Set your schedule",
+          "desc": "Use the weekly template to publish your availability in one click — Mon to Fri, any time window, any session length."
+        },
+        {
+          "title": "Share your link",
+          "desc": "You get a personal booking page at bookvra.com/p/your-name. Send it to clients, add it to your bio, post it anywhere."
+        },
+        {
+          "title": "Manage bookings",
+          "desc": "See who's coming, get email confirmations, and cancel with one click when you need to."
+        }
+      ],
+      "customerSteps": [
+        {
+          "title": "Find a professional",
+          "desc": "Browse our directory by category — coaches, tutors, trainers, therapists and more."
+        },
+        {
+          "title": "Pick a slot",
+          "desc": "See real-time availability on the professional's page. No emails, no waiting."
+        },
+        {
+          "title": "Book in seconds",
+          "desc": "Confirm your booking and get an instant email confirmation with all the details."
+        }
+      ],
+      "proCtaBtn": "Set up your page →",
+      "customerCtaBtn": "Browse professionals →"
+    },
+    "whoItsFor": {
+      "title": "Built for solo professionals",
+      "subtitle": "Anyone who offers sessions, lessons, or appointments — and is tired of managing bookings over WhatsApp.",
+      "professions": [
+        {
+          "icon": "🎾",
+          "label": "Coach"
+        },
+        {
+          "icon": "📚",
+          "label": "Tutor"
+        },
+        {
+          "icon": "💪",
+          "label": "Trainer"
+        },
+        {
+          "icon": "💆",
+          "label": "Therapist"
+        },
+        {
+          "icon": "🔧",
+          "label": "Consultant"
+        },
+        {
+          "icon": "🎨",
+          "label": "Creative"
+        }
+      ]
+    },
+    "stats": [
+      {
+        "stat": "Free",
+        "label": "No credit card required"
+      },
+      {
+        "stat": "< 5 min",
+        "label": "To set up your page"
+      },
+      {
+        "stat": "Instant",
+        "label": "Booking confirmations"
+      }
+    ],
+    "cta": {
+      "title": "Ready to stop managing bookings manually?",
+      "subtitle": "Set up your public booking page in under 5 minutes. Free, forever.",
+      "button": "Create your free account →"
+    }
+  },
+  "Browse": {
+    "title": "Find a professional",
+    "subtitle": "Browse coaches, tutors, trainers, therapists and more. No account needed to browse.",
+    "empty": {
+      "title": "No professionals listed yet.",
+      "desc": "Be the first —",
+      "link": "create your profile"
+    },
+    "viewBook": "View & book →",
+    "bottomCta": {
+      "title": "Are you a professional?",
+      "subtitle": "Set up your free booking page in under 5 minutes and start accepting appointments.",
+      "button": "Create your page →"
+    }
+  },
+  "Pricing": {
+    "title": "Simple, honest pricing",
+    "subtitle": "BookVra is free to use. No subscriptions, no hidden fees, no credit card required.",
+    "tier": {
+      "label": "Free",
+      "price": "£0",
+      "period": "per month, forever"
+    },
+    "features": [
+      "Unlimited slots",
+      "Unlimited bookings",
+      "Public booking page",
+      "Custom link (bookvra.com/p/your-name)",
+      "Instant confirmation emails",
+      "Weekly schedule templates",
+      "Mobile-friendly for you and your clients"
+    ],
+    "ctaButton": "Get started free →",
+    "paidNote": "Paid plans may be introduced in the future — we'll notify you well in advance before anything changes.",
+    "faq": {
+      "title": "Questions",
+      "items": [
+        {
+          "q": "Is it really free?",
+          "a": "Yes. BookVra is completely free right now. We're focused on building something useful for solo professionals."
+        },
+        {
+          "q": "Do I need a credit card?",
+          "a": "No. Sign up with your email or Google account — no payment information required."
+        },
+        {
+          "q": "What happens if you introduce paid plans?",
+          "a": "We'll notify all existing users well before any changes. Early adopters will always be treated well."
+        },
+        {
+          "q": "Is there a limit on bookings or slots?",
+          "a": "No limits. Create as many slots as you need and accept as many bookings as you like."
+        }
+      ]
+    }
+  },
+  "About": {
+    "lastUpdated": "Last updated: March 2026",
+    "title": "About BookVra",
+    "p1": "BookVra is a scheduling tool built for solo professionals — coaches, tutors, trainers, therapists, consultants, and anyone else who earns a living through one-on-one sessions.",
+    "p2": "The problem we're solving is simple: managing bookings over WhatsApp, email, or DMs is painful. You spend more time coordinating than working. BookVra gives you a public booking page where clients can see your real availability and book in seconds — no back-and-forth required.",
+    "p3": "We built BookVra as a focused, no-nonsense tool. You set your schedule, share your link, and we handle the rest — confirmation emails, calendar management, and keeping track of who's coming.",
+    "p4": "BookVra is currently free and early-stage. We're building in public and talking to real professionals to make sure we solve the right problems.",
+    "contact": "Have feedback, questions, or want to work with us?",
+    "ctaSetup": "Create your free page →",
+    "ctaBrowse": "Browse professionals"
+  },
+  "Privacy": {
+    "lastUpdated": "Last updated: March 2026",
+    "title": "Privacy Policy",
+    "sections": [
+      {
+        "title": "1. What we collect",
+        "intro": "When you create an account with BookVra, we collect:",
+        "items": [
+          "Your name and email address",
+          "Your Google profile information (if you sign in with Google)",
+          "Profile information you provide: bio, speciality, tagline, username",
+          "Booking data: appointment times and notes"
+        ]
+      },
+      {
+        "title": "2. How we use your data",
+        "intro": "We use your data exclusively to provide the BookVra service:",
+        "items": [
+          "To display your public booking page to potential clients",
+          "To send booking confirmation emails to you and your clients",
+          "To manage your schedule and appointment history",
+          "To authenticate you when you sign in"
+        ],
+        "note": "We do not sell your data. We do not share it with third parties for advertising purposes."
+      },
+      {
+        "title": "3. Third-party services",
+        "intro": "We use the following services to run BookVra:",
+        "items": [
+          "Resend — for sending transactional emails",
+          "Neon — for database hosting",
+          "Vercel — for application hosting",
+          "Google OAuth — for optional Google sign-in"
+        ],
+        "note": "These providers are contractually obligated to protect your data."
+      },
+      {
+        "title": "4. Public information",
+        "body": "If you are a professional, your name, speciality, tagline, bio, and booking availability are displayed publicly on your booking page. This is the core functionality of the service. You can edit or remove this information at any time from your profile settings."
+      },
+      {
+        "title": "5. Your rights",
+        "intro": "You have the right to:",
+        "items": [
+          "Access the data we hold about you",
+          "Correct inaccurate data",
+          "Request deletion of your account and data"
+        ],
+        "note": "To exercise any of these rights, email us at hello@bookvra.com."
+      },
+      {
+        "title": "6. Contact",
+        "body": "Questions about this policy? hello@bookvra.com"
+      }
+    ]
+  },
+  "Terms": {
+    "lastUpdated": "Last updated: March 2026",
+    "title": "Terms of Service",
+    "sections": [
+      {
+        "title": "1. Acceptance",
+        "body": "By creating an account or using BookVra (\"the Service\"), you agree to these Terms of Service. If you do not agree, please do not use the Service."
+      },
+      {
+        "title": "2. Description of service",
+        "body": "BookVra provides professionals with a public booking page where clients can view availability and schedule appointments. The Service is provided free of charge during the current phase."
+      },
+      {
+        "title": "3. Your account",
+        "intro": "You are responsible for:",
+        "items": [
+          "Maintaining the security of your account credentials",
+          "All activity that occurs under your account",
+          "Providing accurate information in your profile",
+          "Honouring appointments you accept through the Service"
+        ]
+      },
+      {
+        "title": "4. Acceptable use",
+        "intro": "You agree not to:",
+        "items": [
+          "Use the Service for any unlawful purpose",
+          "Impersonate another person or entity",
+          "Upload malicious content or attempt to compromise the Service",
+          "Create fake profiles or bookings",
+          "Use the Service to spam or harass other users"
+        ]
+      },
+      {
+        "title": "5. Bookings and appointments",
+        "body": "BookVra facilitates scheduling between professionals and clients. We are not a party to any service agreement between a professional and their client. Professionals are solely responsible for the services they provide."
+      },
+      {
+        "title": "6. Termination",
+        "body": "You may delete your account at any time by contacting us. We reserve the right to suspend or terminate accounts that violate these terms."
+      },
+      {
+        "title": "7. Changes to these terms",
+        "body": "We may update these terms from time to time. We'll notify registered users by email before significant changes take effect."
+      },
+      {
+        "title": "8. Contact",
+        "body": "Questions? hello@bookvra.com"
+      }
+    ]
+  },
+  "Login": {
+    "title": "Welcome back",
+    "verified": {
+      "bold": "Email verified!",
+      "rest": "You can now sign in to your account."
+    },
+    "noAccount": "No account?",
+    "signUp": "Sign up"
+  },
+  "Register": {
+    "title": "Create account",
+    "hasAccount": "Already have an account?",
+    "signIn": "Sign in"
+  },
+  "AuthLayout": {
+    "tagline": "Professional scheduling made simple"
+  },
+  "Onboarding": {
+    "title": "Welcome! How will you use BookVra?",
+    "subtitle": "Choose your role — you can't change this later.",
+    "error": "Something went wrong. Please try again.",
+    "pro": {
+      "label": "I'm a Professional",
+      "desc": "Coach, tutor, trainer, therapist — I offer sessions and manage my availability.",
+      "loading": "Setting up…"
+    },
+    "customer": {
+      "label": "I'm a Customer",
+      "desc": "I want to discover professionals and book appointments.",
+      "loading": "Setting up…"
+    }
+  },
+  "VerifyEmail": {
+    "verifying": "Verifying your email…",
+    "expired": {
+      "title": "Link expired",
+      "desc": "This verification link has expired. Verification links are valid for 24 hours."
+    },
+    "invalid": {
+      "title": "Invalid link",
+      "desc": "This verification link is invalid or has already been used."
+    },
+    "resend": {
+      "label": "Enter your email to receive a new verification link:",
+      "placeholder": "you@example.com",
+      "button": "Send new verification email"
+    },
+    "backToSignIn": "Back to sign in"
+  },
+  "Header": {
+    "professional": "Professional",
+    "customer": "Customer",
+    "signOut": "Sign out"
+  },
+  "Sidebar": {
+    "pro": {
+      "dashboard": "Dashboard",
+      "availability": "Availability",
+      "bookings": "Bookings",
+      "profile": "My Profile"
+    },
+    "customer": {
+      "dashboard": "Dashboard",
+      "browse": "Browse",
+      "bookings": "My Bookings"
+    }
+  },
+  "ProDashboard": {
+    "title": "Welcome, {name}",
+    "subtitle": "Manage your availability and track bookings.",
+    "stats": {
+      "totalSlots": "Total Slots",
+      "bookedSlots": "Booked Slots",
+      "upcoming": "Upcoming Bookings"
+    },
+    "actions": {
+      "availability": {
+        "title": "Manage Availability",
+        "desc": "Add or remove time slots"
+      },
+      "bookings": {
+        "title": "View Bookings",
+        "desc": "See customer appointments"
+      }
+    },
+    "share": {
+      "title": "🔗 Share your schedule",
+      "desc": "Send this link to customers — they can browse your slots and book directly."
+    }
+  },
+  "Availability": {
+    "title": "My Availability",
+    "desc": "Use Weekly schedule to generate recurring slots in one click, or add individual slots manually.",
+    "weeklyBtn": "📅 Weekly schedule",
+    "addSlotBtn": "+ Add slot",
+    "empty": {
+      "title": "No slots yet",
+      "desc": "Click '📅 Weekly schedule' to generate a full week at once, or '+ Add slot' to add one manually."
+    },
+    "banner": {
+      "zero": "No new slots added",
+      "created": "{count} slot created!",
+      "createdPlural": "{count} slots created!",
+      "skipped": "({count} skipped — already existed)"
+    },
+    "deleteConfirm": "Delete this slot?"
+  },
+  "ProBookings": {
+    "title": "Bookings",
+    "subtitle": "Customers who have booked your slots.",
+    "empty": {
+      "title": "No bookings yet",
+      "desc": "Once customers book your slots, they'll appear here."
+    },
+    "upcoming": "Upcoming ({count})",
+    "past": "Past ({count})",
+    "status": {
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "Profile": {
+    "title": "My Profile",
+    "subtitle": "Customise how you appear to customers on your public booking page.",
+    "editDetails": "Edit details",
+    "saved": "✅ Profile saved!",
+    "fields": {
+      "displayName": "Display name",
+      "displayNamePlaceholder": "Your full name",
+      "username": "Username",
+      "usernameNote": "(your public link)",
+      "usernameHint": "Lowercase letters, numbers and hyphens only.",
+      "usernamePlaceholder": "your-name",
+      "speciality": "Title / speciality",
+      "specialityPlaceholder": "e.g. Badminton Coach, Personal Trainer, Tutor",
+      "tagline": "Tagline",
+      "taglinePlaceholder": "e.g. Helping you move better, one session at a time",
+      "taglineHint": "Shown under your name on your public page.",
+      "bio": "Bio",
+      "bioPlaceholder": "Tell customers about your experience, qualifications, and what to expect from a session with you…",
+      "bioHint": "Appears on your public booking page."
+    },
+    "saveBtn": "Save changes",
+    "preview": {
+      "title": "Preview",
+      "linkLabel": "Your booking link",
+      "copy": "Copy",
+      "openTab": "Open in new tab →",
+      "customerView": "How customers see your profile",
+      "emptyHint": "Fill in the fields on the left to see a preview.",
+      "yourName": "Your name"
+    }
+  },
+  "CustomerDashboard": {
+    "title": "Welcome, {name}!",
+    "subtitle": "Browse professionals and book your appointments.",
+    "stats": {
+      "upcoming": "Upcoming Bookings",
+      "total": "Total Bookings"
+    },
+    "actions": {
+      "browse": {
+        "title": "Browse Professionals",
+        "desc": "Find and book a service"
+      },
+      "bookings": {
+        "title": "My Bookings",
+        "desc": "View & cancel appointments"
+      }
+    }
+  },
+  "CustomerBrowse": {
+    "title": "Browse Professionals",
+    "subtitle": "Find a professional and book an available slot.",
+    "searchPlaceholder": "Search by name or speciality…",
+    "viewAvailability": "View availability →",
+    "empty": {
+      "title": "No professionals found",
+      "noResults": "No results for \"{search}\"",
+      "noRegistered": "No professionals registered yet."
+    }
+  },
+  "CustomerBookings": {
+    "title": "My Bookings",
+    "subtitle": "Manage your appointments.",
+    "empty": {
+      "title": "No bookings yet",
+      "desc": "Browse professionals and book your first appointment."
+    },
+    "upcoming": "Upcoming ({count})",
+    "past": "Past ({count})",
+    "status": {
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled"
+    },
+    "cancelBtn": "Cancel",
+    "cancelModal": {
+      "title": "Cancel booking?",
+      "desc": "Are you sure you want to cancel your appointment on {date} at {time}? This cannot be undone.",
+      "keepIt": "Keep it",
+      "cancelBooking": "Cancel booking"
+    }
+  },
+  "BookPage": {
+    "title": "Book a Slot",
+    "subtitle": "Click a green slot to book it.",
+    "success": "Booking confirmed! View it in",
+    "successLink": "My Bookings",
+    "empty": {
+      "title": "No available slots",
+      "desc": "This professional has no available slots this week."
+    },
+    "modal": {
+      "title": "Confirm Booking",
+      "noteLabel": "Note for the professional (optional)",
+      "notePlaceholder": "e.g. I'm a beginner, I have a knee injury, my goal is weight loss…",
+      "noteHint": "Help them prepare for your session.",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    }
+  },
+  "PublicPro": {
+    "availableSlots": "Available Slots",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "dashboardLink": "Dashboard →"
+  },
+  "WeekCalendar": {
+    "prev": "← Prev",
+    "next": "Next →",
+    "available": "Available",
+    "booked": "Booked",
+    "addSlot": "+ Add"
+  }
+}

@@ -1,9 +1,11 @@
 "use client";
 
 import { signOut, useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import Avatar from "@/components/ui/Avatar";
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 interface HeaderProps {
   onMenuToggle?: () => void;
@@ -12,6 +14,7 @@ interface HeaderProps {
 export default function Header({ onMenuToggle }: HeaderProps) {
   const { data: session } = useSession();
   const role = session?.user?.role;
+  const t = useTranslations("Header");
 
   return (
     <header className="flex h-16 items-center justify-between border-b border-gray-200 bg-white px-4 lg:px-6">
@@ -30,9 +33,10 @@ export default function Header({ onMenuToggle }: HeaderProps) {
       <span className="hidden lg:block text-lg font-bold text-indigo-600">BookVra</span>
 
       <div className="flex items-center gap-3">
+        <LanguageSwitcher />
         {role && (
           <Badge
-            label={role === "PROFESSIONAL" ? "Professional" : "Customer"}
+            label={role === "PROFESSIONAL" ? t("professional") : t("customer")}
             variant={role === "PROFESSIONAL" ? "blue" : "green"}
           />
         )}
@@ -45,7 +49,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
           size="sm"
           onClick={() => signOut({ callbackUrl: "/" })}
         >
-          Sign out
+          {t("signOut")}
         </Button>
       </div>
     </header>

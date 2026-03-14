@@ -1,66 +1,66 @@
-import { withAuth } from "next-auth/middleware";
-import { NextResponse } from "next/server";
+import createIntlMiddleware from "next-intl/middleware";
+import { getToken } from "next-auth/jwt";
+import { NextRequest, NextResponse } from "next/server";
+import { routing } from "./i18n/routing";
 
-export default withAuth(
-  function middleware(req) {
-    const { pathname } = req.nextUrl;
-    const token = req.nextauth.token;
-    const role = token?.role as string | undefined;
-    const needsOnboarding = token?.needsOnboarding;
+const intlMiddleware = createIntlMiddleware(routing);
 
-    // New Google users must choose their role before accessing anything else
+// Public paths (locale-stripped)
+const PUBLIC_EXACT = new Set(["/", "/login", "/register", "/browse", "/pricing", "/about", "/privacy", "/terms", "/verify-email"]);
+const PUBLIC_PREFIXES = ["/p/", "/api/"];
+
+export default async function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+
+  // API routes are handled by Next.js, not locale middleware
+  if (pathname.startsWith("/api/")) return NextResponse.next();
+
+  // Strip locale prefix (/en, /sv) to get canonical path
+  const bare = pathname.replace(/^\/(en|sv)/, "") || "/";
+
+  const isPublic =
+    PUBLIC_EXACT.has(bare) ||
+    PUBLIC_PREFIXES.some((p) => bare.startsWith(p));
+
+  if (!isPublic) {
+    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+    const locale = pathname.match(/^\/(en|sv)/)?.[1] ?? "en";
+
+    if (!token) {
+      const url = req.nextUrl.clone();
+      url.pathname = `/${locale}/login`;
+      return NextResponse.redirect(url);
+    }
+
+    const role = token.role as string | undefined;
+    const needsOnboarding = token.needsOnboarding as boolean | undefined;
+
     if (
       needsOnboarding &&
-      !pathname.startsWith("/onboarding") &&
-      !pathname.startsWith("/api/onboarding") &&
-      !pathname.startsWith("/api/auth")
+      !bare.startsWith("/onboarding") &&
+      !bare.startsWith("/api/onboarding") &&
+      !bare.startsWith("/api/auth")
     ) {
-      return NextResponse.redirect(new URL("/onboarding", req.url));
+      const url = req.nextUrl.clone();
+      url.pathname = `/${locale}/onboarding`;
+      return NextResponse.redirect(url);
     }
 
-    // Skip role-based protection for onboarding routes
-    if (pathname.startsWith("/onboarding") || pathname.startsWith("/api/onboarding")) {
-      return NextResponse.next();
+    if (bare.startsWith("/professional") && role !== "PROFESSIONAL") {
+      const url = req.nextUrl.clone();
+      url.pathname = `/${locale}/customer`;
+      return NextResponse.redirect(url);
     }
 
-    // Role-based route protection
-    if (pathname.startsWith("/professional") && role !== "PROFESSIONAL") {
-      return NextResponse.redirect(new URL("/customer", req.url));
+    if (bare.startsWith("/customer") && role !== "CUSTOMER") {
+      const url = req.nextUrl.clone();
+      url.pathname = `/${locale}/professional`;
+      return NextResponse.redirect(url);
     }
-    if (pathname.startsWith("/customer") && role !== "CUSTOMER") {
-      return NextResponse.redirect(new URL("/professional", req.url));
-    }
-
-    return NextResponse.next();
-  },
-  {
-    callbacks: {
-      authorized: ({ token, req }) => {
-        const { pathname } = req.nextUrl;
-        // Public routes — no token required
-        if (
-          pathname === "/" ||
-          pathname.startsWith("/login") ||
-          pathname.startsWith("/register") ||
-          pathname.startsWith("/api/auth") ||
-          pathname.startsWith("/api/register") ||
-          pathname.startsWith("/p/") ||
-          pathname.startsWith("/browse") ||
-          pathname.startsWith("/pricing") ||
-          pathname.startsWith("/about") ||
-          pathname.startsWith("/privacy") ||
-          pathname.startsWith("/terms") ||
-          pathname.startsWith("/verify-email") ||
-          pathname.startsWith("/api/auth/verify-email")
-        ) {
-          return true;
-        }
-        // All other routes (including /onboarding) require a signed-in user
-        return !!token;
-      },
-    },
   }
-);
+
+  return intlMiddleware(req);
+}
 
 export const config = {
   matcher: [

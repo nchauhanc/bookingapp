@@ -1,0 +1,552 @@
+{
+  "Meta": {
+    "title": "BookVra — Professionell tidsbokning",
+    "description": "Boka möten med proffs eller hantera din tillgänglighet."
+  },
+  "Common": {
+    "signIn": "Logga in",
+    "signOut": "Logga ut",
+    "getStarted": "Kom igång",
+    "save": "Spara ändringar",
+    "cancel": "Avbryt",
+    "or": "eller",
+    "loading": "Laddar…",
+    "dashboard": "Instrumentpanel →",
+    "copy": "Kopiera",
+    "dismiss": "Stäng"
+  },
+  "Nav": {
+    "pricing": "Prissättning",
+    "browse": "Bläddra",
+    "signIn": "Logga in",
+    "getStarted": "Kom igång"
+  },
+  "Footer": {
+    "tagline": "Bokningsverktyget för egenföretagare.",
+    "product": "Produkt",
+    "company": "Företag",
+    "legal": "Juridiskt",
+    "links": {
+      "pricing": "Prissättning",
+      "browseProfessionals": "Hitta proffs",
+      "getStarted": "Kom igång",
+      "about": "Om oss",
+      "contact": "Kontakt",
+      "privacy": "Integritetspolicy",
+      "terms": "Användarvillkor"
+    },
+    "copyright": "© {year} BookVra. Alla rättigheter förbehållna."
+  },
+  "Landing": {
+    "badge": "✨ Professionell tidsbokning, förenklad",
+    "hero": {
+      "title1": "Boka möten.",
+      "title2": "Bygg din verksamhet.",
+      "desc": "Proffs sätter sin tillgänglighet. Kunder bokar på sekunder. Inget fram och tillbaka. Inga missade bokningar.",
+      "cta1": "Starta gratis →",
+      "cta2": "Hitta proffs"
+    },
+    "preview": {
+      "title": "Se det i aktion",
+      "subtitle": "En professionells offentliga sida — live-tillgänglighet, omedelbar bokning.",
+      "proName": "Alex Johansson",
+      "speciality": "Personlig tränare",
+      "tagline": "Hjälper dig röra dig bättre, ett pass i taget",
+      "availableSlots": "Lediga tider",
+      "selectSlot": "Välj en tid för att boka"
+    },
+    "howItWorks": {
+      "title": "Så fungerar det",
+      "subtitle": "Enkelt för proffs. Ännu enklare för kunder.",
+      "forPros": "För proffs",
+      "forCustomers": "För kunder",
+      "proSteps": [
+        {
+          "title": "Sätt ditt schema",
+          "desc": "Använd veckoschemat för att publicera din tillgänglighet med ett klick — mån till fre, valfritt tidsfönster, valfri sessionslängd."
+        },
+        {
+          "title": "Dela din länk",
+          "desc": "Du får en personlig bokningssida på bookvra.com/p/ditt-namn. Skicka den till klienter, lägg till den i din bio, posta den var som helst."
+        },
+        {
+          "title": "Hantera bokningar",
+          "desc": "Se vem som kommer, få e-postbekräftelser, och avboka med ett klick när du behöver."
+        }
+      ],
+      "customerSteps": [
+        {
+          "title": "Hitta ett proffs",
+          "desc": "Bläddra i vår katalog efter kategori — coacher, handledare, tränare, terapeuter och mer."
+        },
+        {
+          "title": "Välj en tid",
+          "desc": "Se realtidstillgänglighet på proffsets sida. Inga mejl, inget väntande."
+        },
+        {
+          "title": "Boka på sekunder",
+          "desc": "Bekräfta din bokning och få en omedelbar e-postbekräftelse med alla detaljer."
+        }
+      ],
+      "proCtaBtn": "Skapa din sida →",
+      "customerCtaBtn": "Hitta proffs →"
+    },
+    "whoItsFor": {
+      "title": "Byggt för egenföretagare",
+      "subtitle": "Alla som erbjuder sessioner, lektioner eller möten — och är trötta på att hantera bokningar via WhatsApp.",
+      "professions": [
+        {
+          "icon": "🎾",
+          "label": "Coach"
+        },
+        {
+          "icon": "📚",
+          "label": "Handledare"
+        },
+        {
+          "icon": "💪",
+          "label": "Tränare"
+        },
+        {
+          "icon": "💆",
+          "label": "Terapeut"
+        },
+        {
+          "icon": "🔧",
+          "label": "Konsult"
+        },
+        {
+          "icon": "🎨",
+          "label": "Kreatör"
+        }
+      ]
+    },
+    "stats": [
+      {
+        "stat": "Gratis",
+        "label": "Inget kreditkort krävs"
+      },
+      {
+        "stat": "< 5 min",
+        "label": "Att sätta upp din sida"
+      },
+      {
+        "stat": "Direkt",
+        "label": "Bokningsbekräftelser"
+      }
+    ],
+    "cta": {
+      "title": "Redo att sluta hantera bokningar manuellt?",
+      "subtitle": "Skapa din offentliga bokningssida på under 5 minuter. Gratis, för alltid.",
+      "button": "Skapa ditt gratis konto →"
+    }
+  },
+  "Browse": {
+    "title": "Hitta ett proffs",
+    "subtitle": "Bläddra bland coacher, handledare, tränare, terapeuter och mer. Inget konto krävs.",
+    "empty": {
+      "title": "Inga proffs listade ännu.",
+      "desc": "Var först —",
+      "link": "skapa din profil"
+    },
+    "viewBook": "Visa & boka →",
+    "bottomCta": {
+      "title": "Är du ett proffs?",
+      "subtitle": "Skapa din gratis bokningssida på under 5 minuter och börja ta emot bokningar.",
+      "button": "Skapa din sida →"
+    }
+  },
+  "Pricing": {
+    "title": "Enkla, ärliga priser",
+    "subtitle": "BookVra är gratis att använda. Inga prenumerationer, inga dolda avgifter, inget kreditkort krävs.",
+    "tier": {
+      "label": "Gratis",
+      "price": "0 kr",
+      "period": "per månad, för alltid"
+    },
+    "features": [
+      "Obegränsade tider",
+      "Obegränsade bokningar",
+      "Offentlig bokningssida",
+      "Anpassad länk (bookvra.com/p/ditt-namn)",
+      "Omedelbara bekräftelsemejl",
+      "Veckoschemasmallar",
+      "Mobilvänlig för dig och dina klienter"
+    ],
+    "ctaButton": "Kom igång gratis →",
+    "paidNote": "Betalda planer kan introduceras i framtiden — vi meddelar dig i god tid innan något förändras.",
+    "faq": {
+      "title": "Frågor",
+      "items": [
+        {
+          "q": "Är det verkligen gratis?",
+          "a": "Ja. BookVra är helt gratis just nu. Vi fokuserar på att bygga något användbart för egenföretagare."
+        },
+        {
+          "q": "Behöver jag ett kreditkort?",
+          "a": "Nej. Registrera dig med din e-post eller Google-konto — ingen betalningsinformation krävs."
+        },
+        {
+          "q": "Vad händer om ni introducerar betalda planer?",
+          "a": "Vi meddelar alla befintliga användare i god tid innan ändringar görs. Tidiga användare behandlas alltid väl."
+        },
+        {
+          "q": "Finns det en gräns för bokningar eller tider?",
+          "a": "Inga gränser. Skapa så många tider du behöver och ta emot så många bokningar du vill."
+        }
+      ]
+    }
+  },
+  "About": {
+    "lastUpdated": "Senast uppdaterad: mars 2026",
+    "title": "Om BookVra",
+    "p1": "BookVra är ett bokningsverktyg byggt för egenföretagare — coacher, handledare, tränare, terapeuter, konsulter och alla andra som försörjer sig genom enskilda sessioner.",
+    "p2": "Problemet vi löser är enkelt: att hantera bokningar via WhatsApp, e-post eller DM är krångligt. Du lägger mer tid på att koordinera än att arbeta. BookVra ger dig en offentlig bokningssida där klienter kan se din faktiska tillgänglighet och boka på sekunder — utan fram och tillbaka.",
+    "p3": "Vi byggde BookVra som ett fokuserat, rättframt verktyg. Du sätter ditt schema, delar din länk, och vi sköter resten — bekräftelsemejl, kalenderhantering och att hålla koll på vem som kommer.",
+    "p4": "BookVra är för närvarande gratis och i ett tidigt stadium. Vi bygger öppet och pratar med riktiga proffs för att säkerställa att vi löser rätt problem.",
+    "contact": "Har du feedback, frågor eller vill samarbeta?",
+    "ctaSetup": "Skapa din gratis sida →",
+    "ctaBrowse": "Hitta proffs"
+  },
+  "Privacy": {
+    "lastUpdated": "Senast uppdaterad: mars 2026",
+    "title": "Integritetspolicy",
+    "sections": [
+      {
+        "title": "1. Vad vi samlar in",
+        "intro": "När du skapar ett konto hos BookVra samlar vi in:",
+        "items": [
+          "Ditt namn och din e-postadress",
+          "Din Google-profilinformation (om du loggar in med Google)",
+          "Profilinformation du tillhandahåller: bio, specialitet, slogan, användarnamn",
+          "Bokningsdata: mötestider och anteckningar"
+        ]
+      },
+      {
+        "title": "2. Hur vi använder dina uppgifter",
+        "intro": "Vi använder dina uppgifter uteslutande för att tillhandahålla BookVra-tjänsten:",
+        "items": [
+          "För att visa din offentliga bokningssida för potentiella klienter",
+          "För att skicka bokningsbekräftelsemejl till dig och dina klienter",
+          "För att hantera ditt schema och din bokningshistorik",
+          "För att autentisera dig när du loggar in"
+        ],
+        "note": "Vi säljer inte dina uppgifter. Vi delar dem inte med tredje parter i reklamsyfte."
+      },
+      {
+        "title": "3. Tredjepartstjänster",
+        "intro": "Vi använder följande tjänster för att driva BookVra:",
+        "items": [
+          "Resend — för att skicka transaktionsmejl",
+          "Neon — för databasvärdskap",
+          "Vercel — för applikationsvärdskap",
+          "Google OAuth — för valfri Google-inloggning"
+        ],
+        "note": "Dessa leverantörer är avtalsmässigt skyldiga att skydda dina uppgifter."
+      },
+      {
+        "title": "4. Offentlig information",
+        "body": "Om du är ett proffs visas ditt namn, specialitet, slogan, bio och bokningskalender offentligt på din bokningssida. Detta är tjänstens kärnfunktionalitet. Du kan redigera eller ta bort denna information när som helst via dina profilinställningar."
+      },
+      {
+        "title": "5. Dina rättigheter",
+        "intro": "Du har rätt att:",
+        "items": [
+          "Få tillgång till de uppgifter vi har om dig",
+          "Korrigera felaktiga uppgifter",
+          "Begära radering av ditt konto och dina uppgifter"
+        ],
+        "note": "För att utöva någon av dessa rättigheter, mejla oss på hello@bookvra.com."
+      },
+      {
+        "title": "6. Kontakt",
+        "body": "Frågor om denna policy? hello@bookvra.com"
+      }
+    ]
+  },
+  "Terms": {
+    "lastUpdated": "Senast uppdaterad: mars 2026",
+    "title": "Användarvillkor",
+    "sections": [
+      {
+        "title": "1. Godkännande",
+        "body": "Genom att skapa ett konto eller använda BookVra (\"Tjänsten\") godkänner du dessa användarvillkor. Om du inte godkänner, vänligen använd inte tjänsten."
+      },
+      {
+        "title": "2. Beskrivning av tjänsten",
+        "body": "BookVra ger proffs en offentlig bokningssida där klienter kan se tillgänglighet och boka möten. Tjänsten tillhandahålls gratis under den nuvarande fasen."
+      },
+      {
+        "title": "3. Ditt konto",
+        "intro": "Du ansvarar för:",
+        "items": [
+          "Att upprätthålla säkerheten för dina kontouppgifter",
+          "All aktivitet som sker under ditt konto",
+          "Att tillhandahålla korrekt information i din profil",
+          "Att hedra möten du accepterar via tjänsten"
+        ]
+      },
+      {
+        "title": "4. Godtagbar användning",
+        "intro": "Du förbinder dig att inte:",
+        "items": [
+          "Använda tjänsten för olagliga ändamål",
+          "Utge dig för att vara en annan person eller enhet",
+          "Ladda upp skadligt innehåll eller försöka äventyra tjänsten",
+          "Skapa falska profiler eller bokningar",
+          "Använda tjänsten för att spamma eller trakassera andra användare"
+        ]
+      },
+      {
+        "title": "5. Bokningar och möten",
+        "body": "BookVra underlättar schemaläggning mellan proffs och klienter. Vi är inte part i något tjänsteavtal mellan ett proffs och deras klient. Proffs ansvarar ensamt för de tjänster de tillhandahåller."
+      },
+      {
+        "title": "6. Uppsägning",
+        "body": "Du kan ta bort ditt konto när som helst genom att kontakta oss. Vi förbehåller oss rätten att avbryta eller avsluta konton som bryter mot dessa villkor."
+      },
+      {
+        "title": "7. Ändringar av dessa villkor",
+        "body": "Vi kan uppdatera dessa villkor från tid till annan. Vi meddelar registrerade användare via e-post innan betydande ändringar träder i kraft."
+      },
+      {
+        "title": "8. Kontakt",
+        "body": "Frågor? hello@bookvra.com"
+      }
+    ]
+  },
+  "Login": {
+    "title": "Välkommen tillbaka",
+    "verified": {
+      "bold": "E-post verifierad!",
+      "rest": "Du kan nu logga in på ditt konto."
+    },
+    "noAccount": "Inget konto?",
+    "signUp": "Registrera dig"
+  },
+  "Register": {
+    "title": "Skapa konto",
+    "hasAccount": "Har du redan ett konto?",
+    "signIn": "Logga in"
+  },
+  "AuthLayout": {
+    "tagline": "Professionell tidsbokning gjord enkel"
+  },
+  "Onboarding": {
+    "title": "Välkommen! Hur ska du använda BookVra?",
+    "subtitle": "Välj din roll — du kan inte ändra detta senare.",
+    "error": "Något gick fel. Försök igen.",
+    "pro": {
+      "label": "Jag är ett proffs",
+      "desc": "Coach, handledare, tränare, terapeut — jag erbjuder sessioner och hanterar min tillgänglighet.",
+      "loading": "Konfigurerar…"
+    },
+    "customer": {
+      "label": "Jag är kund",
+      "desc": "Jag vill hitta proffs och boka möten.",
+      "loading": "Konfigurerar…"
+    }
+  },
+  "VerifyEmail": {
+    "verifying": "Verifierar din e-post…",
+    "expired": {
+      "title": "Länken har gått ut",
+      "desc": "Denna verifieringslänk har gått ut. Verifieringslänkar är giltiga i 24 timmar."
+    },
+    "invalid": {
+      "title": "Ogiltig länk",
+      "desc": "Denna verifieringslänk är ogiltig eller har redan använts."
+    },
+    "resend": {
+      "label": "Ange din e-post för att få en ny verifieringslänk:",
+      "placeholder": "du@exempel.se",
+      "button": "Skicka ny verifierings-e-post"
+    },
+    "backToSignIn": "Tillbaka till inloggning"
+  },
+  "Header": {
+    "professional": "Proffs",
+    "customer": "Kund",
+    "signOut": "Logga ut"
+  },
+  "Sidebar": {
+    "pro": {
+      "dashboard": "Instrumentpanel",
+      "availability": "Tillgänglighet",
+      "bookings": "Bokningar",
+      "profile": "Min profil"
+    },
+    "customer": {
+      "dashboard": "Instrumentpanel",
+      "browse": "Bläddra",
+      "bookings": "Mina bokningar"
+    }
+  },
+  "ProDashboard": {
+    "title": "Välkommen, {name}",
+    "subtitle": "Hantera din tillgänglighet och spåra bokningar.",
+    "stats": {
+      "totalSlots": "Totalt antal tider",
+      "bookedSlots": "Bokade tider",
+      "upcoming": "Kommande bokningar"
+    },
+    "actions": {
+      "availability": {
+        "title": "Hantera tillgänglighet",
+        "desc": "Lägg till eller ta bort tider"
+      },
+      "bookings": {
+        "title": "Visa bokningar",
+        "desc": "Se kundmöten"
+      }
+    },
+    "share": {
+      "title": "🔗 Dela ditt schema",
+      "desc": "Skicka denna länk till kunder — de kan bläddra bland dina tider och boka direkt."
+    }
+  },
+  "Availability": {
+    "title": "Min tillgänglighet",
+    "desc": "Använd Veckoschema för att generera återkommande tider med ett klick, eller lägg till enskilda tider manuellt.",
+    "weeklyBtn": "📅 Veckoschema",
+    "addSlotBtn": "+ Lägg till tid",
+    "empty": {
+      "title": "Inga tider ännu",
+      "desc": "Klicka på '📅 Veckoschema' för att generera en hel vecka på en gång, eller '+ Lägg till tid' för att lägga till manuellt."
+    },
+    "banner": {
+      "zero": "Inga nya tider lades till",
+      "created": "{count} tid skapad!",
+      "createdPlural": "{count} tider skapade!",
+      "skipped": "({count} hoppades över — fanns redan)"
+    },
+    "deleteConfirm": "Ta bort denna tid?"
+  },
+  "ProBookings": {
+    "title": "Bokningar",
+    "subtitle": "Kunder som har bokat dina tider.",
+    "empty": {
+      "title": "Inga bokningar ännu",
+      "desc": "När kunder bokar dina tider visas de här."
+    },
+    "upcoming": "Kommande ({count})",
+    "past": "Tidigare ({count})",
+    "status": {
+      "confirmed": "Bekräftad",
+      "cancelled": "Avbokad"
+    }
+  },
+  "Profile": {
+    "title": "Min profil",
+    "subtitle": "Anpassa hur du visas för kunder på din offentliga bokningssida.",
+    "editDetails": "Redigera uppgifter",
+    "saved": "✅ Profil sparad!",
+    "fields": {
+      "displayName": "Visningsnamn",
+      "displayNamePlaceholder": "Ditt fullständiga namn",
+      "username": "Användarnamn",
+      "usernameNote": "(din offentliga länk)",
+      "usernameHint": "Endast gemener, siffror och bindestreck.",
+      "usernamePlaceholder": "ditt-namn",
+      "speciality": "Titel / specialitet",
+      "specialityPlaceholder": "t.ex. Badmintoncoach, Personlig tränare, Handledare",
+      "tagline": "Slogan",
+      "taglinePlaceholder": "t.ex. Hjälper dig röra dig bättre, ett pass i taget",
+      "taglineHint": "Visas under ditt namn på din offentliga sida.",
+      "bio": "Bio",
+      "bioPlaceholder": "Berätta för kunder om din erfarenhet, meriter och vad de kan förvänta sig av ett pass med dig…",
+      "bioHint": "Visas på din offentliga bokningssida."
+    },
+    "saveBtn": "Spara ändringar",
+    "preview": {
+      "title": "Förhandsvisning",
+      "linkLabel": "Din bokningslänk",
+      "copy": "Kopiera",
+      "openTab": "Öppna i ny flik →",
+      "customerView": "Hur kunder ser din profil",
+      "emptyHint": "Fyll i fälten till vänster för att se en förhandsvisning.",
+      "yourName": "Ditt namn"
+    }
+  },
+  "CustomerDashboard": {
+    "title": "Välkommen, {name}!",
+    "subtitle": "Bläddra bland proffs och boka dina möten.",
+    "stats": {
+      "upcoming": "Kommande bokningar",
+      "total": "Totalt antal bokningar"
+    },
+    "actions": {
+      "browse": {
+        "title": "Hitta proffs",
+        "desc": "Hitta och boka en tjänst"
+      },
+      "bookings": {
+        "title": "Mina bokningar",
+        "desc": "Visa & avboka möten"
+      }
+    }
+  },
+  "CustomerBrowse": {
+    "title": "Hitta proffs",
+    "subtitle": "Hitta ett proffs och boka en ledig tid.",
+    "searchPlaceholder": "Sök på namn eller specialitet…",
+    "viewAvailability": "Visa tillgänglighet →",
+    "empty": {
+      "title": "Inga proffs hittades",
+      "noResults": "Inga resultat för \"{search}\"",
+      "noRegistered": "Inga proffs registrerade ännu."
+    }
+  },
+  "CustomerBookings": {
+    "title": "Mina bokningar",
+    "subtitle": "Hantera dina möten.",
+    "empty": {
+      "title": "Inga bokningar ännu",
+      "desc": "Hitta proffs och boka ditt första möte."
+    },
+    "upcoming": "Kommande ({count})",
+    "past": "Tidigare ({count})",
+    "status": {
+      "confirmed": "Bekräftad",
+      "cancelled": "Avbokad"
+    },
+    "cancelBtn": "Avboka",
+    "cancelModal": {
+      "title": "Avboka bokning?",
+      "desc": "Är du säker på att du vill avboka ditt möte den {date} kl. {time}? Detta kan inte ångras.",
+      "keepIt": "Behåll",
+      "cancelBooking": "Avboka"
+    }
+  },
+  "BookPage": {
+    "title": "Boka en tid",
+    "subtitle": "Klicka på en grön tid för att boka den.",
+    "success": "Bokning bekräftad! Visa den i",
+    "successLink": "Mina bokningar",
+    "empty": {
+      "title": "Inga lediga tider",
+      "desc": "Det här proffset har inga lediga tider denna vecka."
+    },
+    "modal": {
+      "title": "Bekräfta bokning",
+      "noteLabel": "Anteckning till proffset (valfritt)",
+      "notePlaceholder": "t.ex. Jag är nybörjare, jag har en knäskada, mitt mål är viktminskning…",
+      "noteHint": "Hjälp dem förbereda sig för ditt pass.",
+      "cancel": "Avbryt",
+      "confirm": "Bekräfta"
+    }
+  },
+  "PublicPro": {
+    "availableSlots": "Lediga tider",
+    "signIn": "Logga in",
+    "signUp": "Registrera dig",
+    "dashboardLink": "Instrumentpanel →"
+  },
+  "WeekCalendar": {
+    "prev": "← Föregående",
+    "next": "Nästa →",
+    "available": "Tillgänglig",
+    "booked": "Bokad",
+    "addSlot": "+ Lägg till"
+  }
+}
