@@ -1,8 +1,5 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL =
-  process.env.NEXTAUTH_URL?.replace(/\/$/, "") ?? "https://bookvra.com";
-
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -10,21 +7,23 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "*",
         allow: ["/"],
         disallow: [
-          // Dashboard areas — logged-in only, no SEO value
-          "/*/professional",
-          "/*/professional/",
-          "/*/customer",
-          "/*/customer/",
-          // Auth flows
+          // Auth flows — no SEO value
           "/*/login",
           "/*/register",
           "/*/onboarding",
           "/*/verify-email",
+          // Dashboard areas — logged-in only, no SEO value
+          "/*/dashboard",
+          "/*/dashboard/",
+          "/*/professional",
+          "/*/professional/",
+          "/*/customer",
+          "/*/customer/",
           // API routes
           "/api/",
         ],
       },
     ],
-    sitemap: `${BASE_URL}/sitemap.xml`,
+    sitemap: "https://www.bookvra.com/sitemap.xml",
   };
 }
