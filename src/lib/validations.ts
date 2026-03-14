@@ -57,6 +57,9 @@ export const updateProfileSchema = z.object({
   speciality: z.string().max(60, "Title too long").optional().or(z.literal("")),
   tagline:    z.string().max(100, "Tagline must be 100 characters or fewer").optional().or(z.literal("")),
   bio:        z.string().max(600, "Bio must be 600 characters or fewer").optional().or(z.literal("")),
+  city:       z.string().max(80).optional().or(z.literal("")),
+  country:    z.string().max(80).optional().or(z.literal("")),
+  isListed:   z.boolean().optional(),
 });
 
 export type UpdateProfileInput = z.infer<typeof updateProfileSchema>;

@@ -455,7 +455,13 @@
       "taglineHint": "Shown under your name on your public page.",
       "bio": "Bio",
       "bioPlaceholder": "Tell customers about your experience, qualifications, and what to expect from a session with you…",
-      "bioHint": "Appears on your public booking page."
+      "bioHint": "Appears on your public booking page.",
+      "city": "City",
+      "cityPlaceholder": "e.g. London",
+      "country": "Country",
+      "countryPlaceholder": "e.g. United Kingdom",
+      "isListed": "List me in public directory",
+      "isListedHint": "When off, only people with your direct link can book you."
     },
     "saveBtn": "Save changes",
     "preview": {
@@ -490,6 +496,7 @@
     "title": "Browse Professionals",
     "subtitle": "Find a professional and book an available slot.",
     "searchPlaceholder": "Search by name or speciality…",
+    "nearMePlaceholder": "City (optional)",
     "viewAvailability": "View availability →",
     "empty": {
       "title": "No professionals found",

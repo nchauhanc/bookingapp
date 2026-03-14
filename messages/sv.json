@@ -455,7 +455,13 @@
       "taglineHint": "Visas under ditt namn på din offentliga sida.",
       "bio": "Bio",
       "bioPlaceholder": "Berätta för kunder om din erfarenhet, meriter och vad de kan förvänta sig av ett pass med dig…",
-      "bioHint": "Visas på din offentliga bokningssida."
+      "bioHint": "Visas på din offentliga bokningssida.",
+      "city": "Stad",
+      "cityPlaceholder": "t.ex. Stockholm",
+      "country": "Land",
+      "countryPlaceholder": "t.ex. Sverige",
+      "isListed": "Visa mig i katalogen",
+      "isListedHint": "Stängt av: bara folk med din direktlänk kan boka."
     },
     "saveBtn": "Spara ändringar",
     "preview": {
@@ -490,6 +496,7 @@
     "title": "Hitta proffs",
     "subtitle": "Hitta ett proffs och boka en ledig tid.",
     "searchPlaceholder": "Sök på namn eller specialitet…",
+    "nearMePlaceholder": "Stad (valfri)",
     "viewAvailability": "Visa tillgänglighet →",
     "empty": {
       "title": "Inga proffs hittades",

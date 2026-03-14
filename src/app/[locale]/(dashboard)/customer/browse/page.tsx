@@ -15,7 +15,9 @@ export default function BrowsePage() {
   const t = useTranslations("CustomerBrowse");
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const { professionals, isLoading } = useProfessionals(debouncedSearch);
+  const [city, setCity] = useState("");
+  const [debouncedCity, setDebouncedCity] = useState("");
+  const { professionals, isLoading } = useProfessionals(debouncedSearch, debouncedCity);
 
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearch(e.target.value);
@@ -23,6 +25,15 @@ export default function BrowsePage() {
     clearTimeout((window as unknown as { _searchTimer?: ReturnType<typeof setTimeout> })._searchTimer);
     (window as unknown as { _searchTimer?: ReturnType<typeof setTimeout> })._searchTimer = setTimeout(
       () => setDebouncedSearch(e.target.value),
+      300
+    );
+  }
+
+  function handleCityChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setCity(e.target.value);
+    clearTimeout((window as unknown as { _cityTimer?: ReturnType<typeof setTimeout> })._cityTimer);
+    (window as unknown as { _cityTimer?: ReturnType<typeof setTimeout> })._cityTimer = setTimeout(
+      () => setDebouncedCity(e.target.value),
       300
     );
   }
@@ -36,13 +47,23 @@ export default function BrowsePage() {
         </p>
       </div>
 
-      <Input
-        id="search"
-        placeholder={t("searchPlaceholder")}
-        value={search}
-        onChange={handleSearchChange}
-        className="max-w-sm"
-      />
+      {/* Search + city filter row */}
+      <div className="flex flex-col sm:flex-row gap-3">
+        <Input
+          id="search"
+          placeholder={t("searchPlaceholder")}
+          value={search}
+          onChange={handleSearchChange}
+          className="max-w-sm"
+        />
+        <Input
+          id="city"
+          placeholder={t("nearMePlaceholder")}
+          value={city}
+          onChange={handleCityChange}
+          className="max-w-xs"
+        />
+      </div>
 
       {isLoading ? (
         <div className="flex justify-center py-20">
@@ -77,6 +98,11 @@ function ProfessionalCard({ professional, viewLabel }: { professional: UserPubli
             </p>
             {professional.speciality && (
               <Badge label={professional.speciality} variant="blue" />
+            )}
+            {(professional.city || professional.country) && (
+              <p className="text-xs text-gray-400 mt-0.5">
+                {[professional.city, professional.country].filter(Boolean).join(", ")}
+              </p>
             )}
           </div>
         </div>

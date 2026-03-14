@@ -9,6 +9,8 @@ export interface UserPublic {
   role: Role;
   bio: string | null;
   speciality: string | null;
+  city: string | null;
+  country: string | null;
 }
 
 export interface SlotPublic {

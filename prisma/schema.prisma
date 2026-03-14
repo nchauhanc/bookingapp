@@ -26,6 +26,9 @@ model User {
   bio           String?
   tagline       String? // short punchy line, e.g. "10+ years · All levels welcome"
   speciality    String? // e.g. "Dentist", "Coach"
+  city          String? // e.g. "London"
+  country       String? // e.g. "United Kingdom"
+  isListed      Boolean   @default(true) // whether to appear in public browse listing
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 

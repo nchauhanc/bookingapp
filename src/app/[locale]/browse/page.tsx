@@ -3,12 +3,16 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import Footer from "@/components/layout/Footer";
 import PublicNav from "@/components/layout/PublicNav";
+import { scoreProfessional } from "@/lib/scoring";
 
 export default async function BrowsePage() {
   const t = await getTranslations("Browse");
 
-  const professionals = await prisma.user.findMany({
-    where: { role: "PROFESSIONAL" },
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+  const rawProfessionals = await prisma.user.findMany({
+    where: { role: "PROFESSIONAL", isListed: true },
     select: {
       id: true,
       name: true,
@@ -17,9 +21,36 @@ export default async function BrowsePage() {
       tagline: true,
       bio: true,
       image: true,
+      city: true,
+      country: true,
+      _count: {
+        select: {
+          slots: {
+            where: { isBooked: false, startTime: { gte: new Date() } },
+          },
+          bookings: {
+            where: { createdAt: { gte: thirtyDaysAgo }, status: "CONFIRMED" },
+          },
+        },
+      },
     },
-    orderBy: { name: "asc" },
   });
+
+  // Sort by relevance score (no customer location available on public page)
+  const professionals = rawProfessionals
+    .map((pro) => ({
+      ...pro,
+      _score: scoreProfessional({
+        bio: pro.bio,
+        speciality: pro.speciality,
+        city: pro.city,
+        country: pro.country,
+        name: pro.name,
+        _count: { slots: pro._count.slots, recentBookings: pro._count.bookings },
+      }),
+    }))
+    .sort((a, b) => b._score - a._score)
+    .map(({ _score, _count, ...rest }) => rest);
 
   return (
     <div className="min-h-screen bg-white">
@@ -88,6 +119,11 @@ export default async function BrowsePage() {
                           <span className="inline-block mt-0.5 rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700">
                             {pro.speciality}
                           </span>
+                        )}
+                        {(pro.city || pro.country) && (
+                          <p className="text-xs text-gray-400 mt-0.5">
+                            {[pro.city, pro.country].filter(Boolean).join(", ")}
+                          </p>
                         )}
                       </div>
                     </div>

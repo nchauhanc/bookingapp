@@ -14,6 +14,9 @@ const PROFILE_SELECT = {
   tagline:    true,
   bio:        true,
   role:       true,
+  city:       true,
+  country:    true,
+  isListed:   true,
 } as const;
 
 // GET /api/profile — fetch the current user's profile fields
@@ -51,7 +54,7 @@ export async function PUT(req: NextRequest) {
     );
   }
 
-  const { name, username, speciality, tagline, bio } = parsed.data;
+  const { name, username, speciality, tagline, bio, city, country, isListed } = parsed.data;
 
   // Check username uniqueness (ignore own current username)
   if (username) {
@@ -72,6 +75,9 @@ export async function PUT(req: NextRequest) {
       speciality: speciality || null,
       tagline:    tagline    || null,
       bio:        bio        || null,
+      city:       city       || null,
+      country:    country    || null,
+      ...(isListed !== undefined ? { isListed } : {}),
     },
     select: PROFILE_SELECT,
   });

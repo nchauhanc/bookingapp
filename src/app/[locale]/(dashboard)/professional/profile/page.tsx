@@ -20,6 +20,9 @@ interface ProfileData {
   tagline: string | null;
   bio: string | null;
   role: string;
+  city: string | null;
+  country: string | null;
+  isListed: boolean;
 }
 
 export default function ProfilePage() {
@@ -35,6 +38,9 @@ export default function ProfilePage() {
   const [speciality, setSpeciality] = useState("");
   const [tagline, setTagline] = useState("");
   const [bio, setBio] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [isListed, setIsListed] = useState(true);
 
   // save state
   const [saving, setSaving] = useState(false);
@@ -52,6 +58,9 @@ export default function ProfilePage() {
         setSpeciality(data.speciality ?? "");
         setTagline(data.tagline ?? "");
         setBio(data.bio ?? "");
+        setCity(data.city ?? "");
+        setCountry(data.country ?? "");
+        setIsListed(data.isListed ?? true);
       })
       .finally(() => setLoading(false));
   }, []);
@@ -64,7 +73,7 @@ export default function ProfilePage() {
     const res = await fetch("/api/profile", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, username, speciality, tagline, bio }),
+      body: JSON.stringify({ name, username, speciality, tagline, bio, city, country, isListed }),
     });
 
     const data = await res.json();
@@ -77,6 +86,7 @@ export default function ProfilePage() {
 
     setProfile(data);
     setUsername(data.username ?? "");
+    setIsListed(data.isListed ?? true);
     // Update the NextAuth session so the name in the header updates too
     await updateSession({ name: data.name });
     setSuccess(true);
@@ -88,6 +98,9 @@ export default function ProfilePage() {
   const publicUrl = typeof window !== "undefined"
     ? `${window.location.origin}/p/${publicHandle}`
     : `/p/${publicHandle}`;
+
+  // Suppress unused variable warning (session is used for updateSession)
+  void session;
 
   if (loading) {
     return (
@@ -191,6 +204,26 @@ export default function ProfilePage() {
             </div>
           </div>
 
+          {/* Location fields */}
+          <div className="grid grid-cols-2 gap-3">
+            <Input
+              id="profile-city"
+              label={t("fields.city")}
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              placeholder={t("fields.cityPlaceholder")}
+              maxLength={80}
+            />
+            <Input
+              id="profile-country"
+              label={t("fields.country")}
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              placeholder={t("fields.countryPlaceholder")}
+              maxLength={80}
+            />
+          </div>
+
           <Textarea
             id="profile-bio"
             label={t("fields.bio")}
@@ -201,6 +234,30 @@ export default function ProfilePage() {
             maxLength={600}
             hint={t("fields.bioHint")}
           />
+
+          {/* Directory listing toggle */}
+          <div className="flex items-center justify-between rounded-xl bg-gray-50 px-4 py-3">
+            <div>
+              <p className="text-sm font-medium text-gray-900">{t("fields.isListed")}</p>
+              <p className="text-xs text-gray-500">{t("fields.isListedHint")}</p>
+            </div>
+            <button
+              role="switch"
+              aria-checked={isListed}
+              onClick={() => setIsListed(!isListed)}
+              className={[
+                "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2",
+                isListed ? "bg-indigo-600" : "bg-gray-200",
+              ].join(" ")}
+            >
+              <span
+                className={[
+                  "inline-block h-5 w-5 rounded-full bg-white shadow ring-0 transition-transform",
+                  isListed ? "translate-x-5" : "translate-x-0",
+                ].join(" ")}
+              />
+            </button>
+          </div>
 
           <div className="pt-1">
             <Button onClick={handleSave} loading={saving}>
