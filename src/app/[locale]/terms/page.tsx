@@ -1,11 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import Footer from "@/components/layout/Footer";
-import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+import PublicNav from "@/components/layout/PublicNav";
 
 export default async function TermsPage() {
   const t = await getTranslations("Terms");
-  const tNav = await getTranslations("Nav");
 
   const sections = t.raw("sections") as {
     title: string;
@@ -16,21 +15,7 @@ export default async function TermsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Nav */}
-      <nav className="sticky top-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-          <Link href="/" className="text-2xl font-bold text-indigo-600">BookVra</Link>
-          <div className="flex items-center gap-2">
-            <LanguageSwitcher />
-            <Link href="/login" className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors">
-              {tNav("signIn")}
-            </Link>
-            <Link href="/register" className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">
-              {tNav("getStarted")}
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <PublicNav />
 
       {/* Content */}
       <section className="py-20">

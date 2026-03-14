@@ -78,21 +78,23 @@ export default async function PublicSchedulePage({ params }: Props) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Minimal public navbar */}
-      <nav className="bg-white border-b border-gray-200">
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 backdrop-blur-md">
         <div className="max-w-3xl mx-auto flex items-center justify-between px-4 py-3">
-          <Link href="/" className="text-xl font-bold text-indigo-600">
+          <Link href="/" className="text-xl font-bold text-indigo-600 shrink-0">
             BookVra
           </Link>
-          <div className="flex items-center gap-2">
-            <LanguageSwitcher />
+          <div className="flex items-center gap-1 sm:gap-2">
             {!session ? (
               <>
+                {/* Sign in hidden on mobile */}
                 <Link
                   href={`/login?callbackUrl=/${locale}/p/${professionalId}`}
-                  className="rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+                  className="hidden sm:block rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
                 >
                   {t("signIn")}
                 </Link>
+                <span className="hidden sm:block h-4 w-px bg-gray-200 mx-1" aria-hidden="true" />
+                <LanguageSwitcher />
                 <Link
                   href={`/register?callbackUrl=/${locale}/p/${professionalId}`}
                   className="rounded-lg bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700 transition-colors"
@@ -101,12 +103,15 @@ export default async function PublicSchedulePage({ params }: Props) {
                 </Link>
               </>
             ) : (
-              <Link
-                href={dashboardHref}
-                className="rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
-              >
-                {t("dashboardLink")}
-              </Link>
+              <>
+                <LanguageSwitcher />
+                <Link
+                  href={dashboardHref}
+                  className="rounded-lg px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+                >
+                  {t("dashboardLink")}
+                </Link>
+              </>
             )}
           </div>
         </div>

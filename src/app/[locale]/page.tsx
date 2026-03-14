@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import Footer from "@/components/layout/Footer";
-import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+import PublicNav from "@/components/layout/PublicNav";
 
 export default async function LandingPage({
   params,
@@ -17,7 +17,6 @@ export default async function LandingPage({
   if (session?.user?.role === "CUSTOMER") redirect(`/${locale}/customer`);
 
   const t = await getTranslations("Landing");
-  const tNav = await getTranslations("Nav");
 
   const proSteps = t.raw("howItWorks.proSteps") as { title: string; desc: string }[];
   const customerSteps = t.raw("howItWorks.customerSteps") as { title: string; desc: string }[];
@@ -27,27 +26,7 @@ export default async function LandingPage({
   return (
     <div className="min-h-screen bg-white">
 
-      {/* ── Nav ── */}
-      <nav className="sticky top-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-          <span className="text-2xl font-bold text-indigo-600">BookVra</span>
-          <div className="flex items-center gap-2">
-            <LanguageSwitcher />
-            <Link href="/pricing" className="hidden sm:block rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors">
-              {tNav("pricing")}
-            </Link>
-            <Link href="/browse" className="hidden sm:block rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors">
-              {tNav("browse")}
-            </Link>
-            <Link href="/login" className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors">
-              {tNav("signIn")}
-            </Link>
-            <Link href="/register" className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">
-              {tNav("getStarted")}
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <PublicNav showPricing showBrowse />
 
       {/* ── Hero ── */}
       <section className="bg-gradient-to-br from-indigo-50 via-white to-purple-50">
