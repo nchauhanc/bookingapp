@@ -27,7 +27,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
       {/* Drawer */}
       <aside className="absolute left-0 top-0 h-full w-64 bg-white shadow-xl">
         <div className="flex items-center justify-between border-b border-gray-200 px-4 py-4">
-          <span className="text-lg font-bold text-indigo-600">BookSlot</span>
+          <span className="text-lg font-bold text-indigo-600">BookVra</span>
           <button
             onClick={onClose}
             className="rounded-lg p-1 text-gray-500 hover:bg-gray-100"

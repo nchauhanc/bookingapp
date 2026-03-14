@@ -130,7 +130,7 @@ export default function PublicBookingSection({
         />
       ) : (
         <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-sm ring-1 ring-gray-200">
-          <WeekCalendar slots={currentSlots} onBookSlot={handleSlotClick} />
+          <WeekCalendar slots={currentSlots} onBookVra={handleSlotClick} />
         </div>
       )}
 

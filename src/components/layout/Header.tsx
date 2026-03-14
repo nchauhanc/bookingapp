@@ -27,7 +27,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
       </button>
 
       {/* Logo (desktop) */}
-      <span className="hidden lg:block text-lg font-bold text-indigo-600">BookSlot</span>
+      <span className="hidden lg:block text-lg font-bold text-indigo-600">BookVra</span>
 
       <div className="flex items-center gap-3">
         {role && (

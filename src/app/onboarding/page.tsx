@@ -39,11 +39,11 @@ export default function OnboardingPage() {
       <div className="w-full max-w-lg">
 
         {/* Logo */}
-        <p className="text-center text-2xl font-bold text-indigo-600 mb-8">BookSlot</p>
+        <p className="text-center text-2xl font-bold text-indigo-600 mb-8">BookVra</p>
 
         <div className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-200">
           <h1 className="text-2xl font-bold text-gray-900 text-center">
-            Welcome! How will you use BookSlot?
+            Welcome! How will you use BookVra?
           </h1>
           <p className="mt-2 text-sm text-gray-500 text-center">
             Choose your role — you can&apos;t change this later.

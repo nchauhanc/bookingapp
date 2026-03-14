@@ -27,14 +27,14 @@ interface WeekCalendarProps {
   // Professional mode: allows deleting slots
   onDeleteSlot?: (slotId: string) => void;
   // Customer mode: click to book
-  onBookSlot?: (slot: WeekSlot) => void;
+  onBookVra?: (slot: WeekSlot) => void;
 }
 
 export default function WeekCalendar({
   slots,
   onAddSlot,
   onDeleteSlot,
-  onBookSlot,
+  onBookVra,
 }: WeekCalendarProps) {
   const [weekStart, setWeekStart] = useState(() =>
     startOfWeek(new Date(), { weekStartsOn: 1 }) // Monday
@@ -103,8 +103,8 @@ export default function WeekCalendar({
                         endTime={slot.endTime}
                         isBooked={slot.isBooked}
                         onClick={
-                          onBookSlot && !slot.isBooked
-                            ? () => onBookSlot(slot)
+                          onBookVra && !slot.isBooked
+                            ? () => onBookVra(slot)
                             : undefined
                         }
                       />

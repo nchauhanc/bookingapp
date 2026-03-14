@@ -118,7 +118,7 @@ export default function VerifyEmailPage() {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-200">
         <Link href="/" className="mb-6 inline-block text-lg font-bold text-indigo-600">
-          BookSlot
+          BookVra
         </Link>
         <Suspense
           fallback={

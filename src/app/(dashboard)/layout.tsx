@@ -14,7 +14,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       {/* Desktop sidebar */}
       <aside className="hidden lg:flex lg:flex-col lg:w-56 lg:border-r lg:border-gray-200 lg:bg-white">
         <div className="flex items-center px-4 py-5 border-b border-gray-200">
-          <span className="text-xl font-bold text-indigo-600">BookSlot</span>
+          <span className="text-xl font-bold text-indigo-600">BookVra</span>
         </div>
         <Sidebar />
       </aside>

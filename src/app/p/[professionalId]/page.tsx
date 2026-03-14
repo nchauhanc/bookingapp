@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props) {
   const professional = await resolveProfessional(professionalId);
   if (!professional) return {};
   return {
-    title: `Book with ${professional.name ?? "Professional"} — BookSlot`,
+    title: `Book with ${professional.name ?? "Professional"} — BookVra`,
     description: professional.speciality
       ? `Schedule a ${professional.speciality} appointment`
       : "Book an appointment",
@@ -77,7 +77,7 @@ export default async function PublicSchedulePage({ params }: Props) {
       <nav className="bg-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto flex items-center justify-between px-4 py-3">
           <Link href="/" className="text-xl font-bold text-indigo-600">
-            BookSlot
+            BookVra
           </Link>
           {!session ? (
             <div className="flex items-center gap-2">

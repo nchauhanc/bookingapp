@@ -45,6 +45,11 @@ export default withAuth(
           pathname.startsWith("/api/auth") ||
           pathname.startsWith("/api/register") ||
           pathname.startsWith("/p/") ||
+          pathname.startsWith("/browse") ||
+          pathname.startsWith("/pricing") ||
+          pathname.startsWith("/about") ||
+          pathname.startsWith("/privacy") ||
+          pathname.startsWith("/terms") ||
           pathname.startsWith("/verify-email") ||
           pathname.startsWith("/api/auth/verify-email")
         ) {

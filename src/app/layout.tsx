@@ -3,7 +3,7 @@ import "./globals.css";
 import SessionProvider from "@/components/layout/SessionProvider";
 
 export const metadata: Metadata = {
-  title: "BookSlot — Professional Scheduling",
+  title: "BookVra — Professional Scheduling",
   description: "Book appointments with professionals or manage your availability.",
 };
 

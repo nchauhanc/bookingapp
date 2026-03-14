@@ -6,7 +6,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="mb-8 text-center">
-          <span className="text-3xl font-bold text-indigo-600">BookSlot</span>
+          <span className="text-3xl font-bold text-indigo-600">BookVra</span>
           <p className="mt-1 text-sm text-gray-500">Professional scheduling made simple</p>
         </div>
         {/* Card */}

@@ -83,7 +83,7 @@ export default function BookPage({ params }: Props) {
       ) : (
         <WeekCalendar
           slots={slots}
-          onBookSlot={(slot) => {
+          onBookVra={(slot) => {
             setSelectedSlot(slot);
             setSuccess(false);
           }}
