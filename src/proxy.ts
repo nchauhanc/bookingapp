@@ -12,8 +12,9 @@ const PUBLIC_PREFIXES = ["/p/", "/api/"];
 export default async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // API routes are handled by Next.js, not locale middleware
+  // API routes, sitemap and robots bypass locale middleware entirely
   if (pathname.startsWith("/api/")) return NextResponse.next();
+  if (pathname === "/sitemap.xml" || pathname === "/robots.txt") return NextResponse.next();
 
   // Strip locale prefix (/en, /sv) to get canonical path
   const bare = pathname.replace(/^\/(en|sv)/, "") || "/";
@@ -64,6 +65,7 @@ export default async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    // Exclude static assets, images, sitemap, robots from middleware
+    "/((?!_next/static|_next/image|favicon.ico|sitemap\\.xml|robots\\.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };
